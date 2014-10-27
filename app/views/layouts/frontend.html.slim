@@ -1,0 +1,21 @@
+doctype html
+html.frontend
+  head
+    meta[name="viewport" content="width=device-width, initial-scale=1.0"]
+    title
+      = content_for?(:title) ? yield(:title) : 'De Rails'
+    meta name="description" content="#{content_for?(:description) ? yield(:description) : 'De Rails'}"
+    == stylesheet_link_tag "frontend", :media => 'all', 'data-turbolinks-track' => true
+    == csrf_meta_tags
+  body
+    header#header.navbar.navbar-fixed-top
+      .container
+        == render '/layouts/frontend_header'
+
+    section#main role="main"
+      == yield
+
+    footer#footer role="contentinfo"
+      == render '/layouts/frontend_footer'
+
+    == javascript_include_tag 'frontend', 'data-turbolinks-track' => true
