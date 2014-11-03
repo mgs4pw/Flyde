@@ -13,7 +13,7 @@ gem 'figaro', '>= 1.0.0.rc1'
 gem 'pg'
 gem 'slim-rails'
 gem 'therubyracer', :platform=>:ruby
-gem 'thin',
+gem 'thin'
 gem 'rails_12factor', group: :production
 
 group :development do
