@@ -1,0 +1,44 @@
+.modal.fade.in#signup_company
+  .modal-dialog
+    .modal-content
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {:id => "sign_up_company", :autocomplete => :off }, :format => :json, :remote => true) do |f|
+        .modal-header.text-center
+          button.close data-dismiss="modal" x
+          h3.semibold.modal-title.text-success Let's get started
+          p.text-muted Fast and Simple
+
+        .modal-body
+          .alert.alert-dismissable.alert-danger id="singup_company_error" style="display: none;"
+            button.close aria-hidden="true" data-dismiss="alert" type="button" x
+            div
+          .panel-body
+            .from-group
+              .row
+                .col-sm-6
+                  = f.label :name, 'You Fulll Name', class: 'control-label'
+                  = f.text_field :name, class: "form-control", placeholder: "Name"
+                .col-sm-6
+                  = f.label :email, 'Enter you email', class: 'control-label'
+                  = f.email_field :email, class: "form-control", placeholder: "you@example.com", type: "email"
+            .form-group
+              .row
+                .col-sm-6
+                  = f.label :company_name, 'Your Company Name', class: 'control-label'
+                  = f.text_field :company_name, class: "form-control", placeholder: "Your company name"
+                .col-sm-6
+                  = f.label :password, 'Create Password', class: 'control-label'
+                  = f.password_field :password, class: "form-control", placeholder: "Password", type: "password"
+            .form-group
+              .row
+                .col-sm-6
+                  = f.label :position, 'Your Position', class: 'control-label'
+                  = f.text_field :position, class: "form-control", placeholder: "you@example.com"
+                .col-sm-6
+                  = f.label :country_id, 'Country (Language)', class: 'control-label'
+                  = f.select :country_id, @countries.collect {|c| [c.name, c.id]}, {}, class: 'form-control'
+            = f.hidden_field :user_type, value: User::COMPANY
+            .form-group
+              .col-sm-12.text-center
+                br
+                br
+                = f.button 'Submit', class: 'btn btn-default'

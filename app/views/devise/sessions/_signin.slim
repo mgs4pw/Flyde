@@ -1,0 +1,24 @@
+.modal.fade.in#signin_form
+  .modal-dialog
+    .modal-content
+      = form_for(resource, as: resource_name, url: session_path(resource_name), html: {:id => "sign_in_user", :autocomplete => :off }, :format => :json,  :method => :post) do |f|
+        .modal-header.text-center
+          button.close data-dismiss="modal" x
+          h1.semibold.modal-title.text-success Log In
+
+        .modal-body
+          .alert.alert-dismissable.alert-danger id="singin_error" style="display: none;"
+            button.close aria-hidden="true" data-dismiss="alert" type="button" x
+            div
+
+          fieldset
+            .form-group
+              span.input-icon
+                = f.label :email, 'Email', class: 'control-label'
+                = f.email_field :email, class: "form-control", placeholder: "Email", type: "email", autocomplete: "off"
+            .form-group
+              span.input-icon
+                = f.label :password, 'Password', class: 'control-label'
+                = f.password_field :password, class: "form-control", placeholder: "Password", type: "password"
+        .modal-footer
+          = f.button "Log in", class: "btn btn-primary"

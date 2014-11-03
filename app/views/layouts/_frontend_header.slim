@@ -3,139 +3,39 @@
     span.logo-figure style="margin-left:-4px;" 
     span.logo-text
 .navbar-toolbar.clearfix
-  ul.nav.navbar-nav
-    li.navbar-main.navbar-toggle
-      a data-target="#navbar-collapse" data-toggle="collapse" href="javascript:void(0);" 
-        span.meta
-          span.icon
-            i.ico-paragraph-justify3
   #dropdown-form.navbar-form.navbar-left.dropdown
     form action="" role="search" 
       .has-icon
         input.form-control placeholder=("Search this site...") type="text" 
           i.ico-search.form-control-icon
-  ul.nav.navbar-nav.navbar-right
-    li
-      a data-target="#dropdown-form" data-toggle="dropdown" href="javascript:void(0);" 
-        span.meta
-          span.icon
-            i.ico-search
   #navbar-collapse.collapse.navbar-collapse.navbar-collapse-alt
     ul.nav.navbar-nav.navbar-right
       li.dropdown
-        a.dropdown-toggle.active data-toggle="dropdown" href="#" 
+        = link_to '', class: 'dropdown-toggle', data: {toggle: 'dropdown'} do
           span.meta
-            span.text HOME
-            span.caret
-        ul.dropdown-menu
-          li
-            a href="index.html"  Option 1: Layer Slider
-          li
-            a href="index2.html"  Option 2: Parallax Background
+            span.text How It Works
       li.dropdown
-        a.dropdown-toggle data-toggle="dropdown" href="#" 
+        = link_to '', class: 'dropdown-toggle', data: {toggle: 'dropdown'} do
           span.meta
-            span.text PAGES
-            span.caret
-        ul.dropdown-menu
-          li
-            a href="page-about.html"  About Us
-          li
-            a href="page-contact.html"  Contact Us
-          li
-            a href="page-left-sidebar.html"  Left Sidebar
-          li
-            a href="page-right-sidebar.html"  Right Sidebar
-          li
-            a href="page-account-register.html"  Account Register
-          li
-            a href="page-login.html"  Login
+            span.text Program
       li.dropdown
-        a.dropdown-toggle data-toggle="dropdown" href="#" 
+        = link_to '', class: 'dropdown-toggle', data: {toggle: 'dropdown'} do
           span.meta
-            span.text BLOG
-            span.caret
-        ul.dropdown-menu
-          li
-            a href="blog-large.html"  Blog large
-          li
-            a href="blog-medium.html"  Blog medium
-          li
-            a href="blog-single.html"  Blog single
-          li
-            a href="blog-left-sidebar.html"  Blog left sidebar
-          li
-            a href="blog-right-sidebar.html"  Blog right sidebar
-          li
-            a href="blog-masonry.html"  Blog masonry
+            span.text Our Team
       li.dropdown
-        a.dropdown-toggle data-toggle="dropdown" href="#" 
+        = link_to '', class: 'dropdown-toggle', data: {toggle: 'dropdown'} do
           span.meta
-            span.text PORTFOLIO
-            span.caret
-        ul.dropdown-menu
-          li
-            a href="portfolio-2-columns.html"  Portfolio 2 Columns
-          li
-            a href="portfolio-3-columns.html"  Portfolio 3 Columns
-          li
-            a href="portfolio-4-columns.html"  Portfolio 4 Columns
-          li
-            a href="portfolio-single.html"  Portfolio Single
-      li.dropdown.custom.mega
-        a.dropdown-toggle data-toggle="dropdown" href="#" 
+            span.text Contact
+      li.dropdown
+        = link_to '', class: 'dropdown-toggle', data: {toggle: 'modal', target: '#signup_main'} do
           span.meta
-            span.text MEGA MENU
-            span.caret
-        .dropdown-menu
-          ul.table-layout.nm
-            li.col-sm-3.valign-top
-              ul.dropdown-menu
-                li.dropdown-header Menu Section 1
-                li
-                  a href="#"  Action
-                li
-                  a href="#"  Another action
-                li
-                  a href="#"  Something else here
-                li
-                  a href="#"  One more link
-                li
-                  a href="#"  Other more link
-            li.col-sm-3.valign-top
-              ul.dropdown-menu
-                li.dropdown-header Menu Section 2
-                li
-                  a href="#"  Action
-                li
-                  a href="#"  Another action
-                li
-                  a href="#"  Something else here
-                li
-                  a href="#"  One more link
-                li
-                  a href="#"  Other more link
-            li.col-sm-6.valign-top
-              ul.dropdown-menu.mb5
-                li.dropdown-header Mega Menu Widget
-                li.row
-                  .col-xs-6
-                    .thumbnail.nm
-                      .media
-                        .indicator
-                          span.spinner
-                        .overlay
-                          .toolbar
-                            a.btn.btn-success href="javascript:void(0);" 
-                              i.ico-plus
-                        img alt="Photo" data-src="../image/portfolio/portfolio8.jpg" data-toggle="unveil" src="../image/portfolio/placeholder.jpg" width="100%" /
-                  .col-xs-6
-                    .thumbnail.nm
-                      .media
-                        .indicator
-                          span.spinner
-                        .overlay
-                          .toolbar
-                            a.btn.btn-success href="javascript:void(0);" 
-                              i.ico-plus
-                        img alt="Photo" data-src="../image/portfolio/portfolio5.jpg" data-toggle="unveil" src="../image/portfolio/placeholder.jpg" width="100%" /
+            span.text Sign Up
+      li.dropdown
+        = link_to '', class: 'dropdown-toggle', data: { toggle: "modal", target: '#signin_form' } do
+          span.meta
+            span.text Log In
+- content_for :modals
+  = render 'devise/sessions/signin'
+  = render 'devise/registrations/company'
+  = render 'devise/registrations/student'
+  = render 'devise/registrations/signup_main'

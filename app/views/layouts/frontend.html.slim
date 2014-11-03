@@ -18,4 +18,6 @@ html.frontend
     footer#footer role="contentinfo"
       == render '/layouts/frontend_footer'
 
+    == yield :modals
+
     == javascript_include_tag 'frontend', 'data-turbolinks-track' => true

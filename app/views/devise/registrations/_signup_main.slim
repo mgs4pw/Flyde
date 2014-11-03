@@ -1,0 +1,20 @@
+.modal.fade.in#signup_main
+  .modal-dialog
+    .modal-content
+      .modal-header.text-center
+        button.close data-dismiss="modal" x
+        br
+        br
+        h2.semibold.modal-title.text-success Let's get started!
+        br
+        h4.semibold.modal-title It's fast and simple
+
+      .modal-body.col-sm-12
+        .col-sm-6.text-center
+          = link_to 'I am a company', '#', id: 'gotoCompanySignup', class: 'btn btn-default', data: { toggle: 'modal' }
+        .col-sm-6.text-center
+          = link_to 'I am a student', '#', id: 'gotoStudentSignup',  class: 'btn btn-default', data: { toggle: 'modal' }
+      .modal-footer
+        br
+        br
+

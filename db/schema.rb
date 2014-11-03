@@ -11,17 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141027141417) do
+ActiveRecord::Schema.define(version: 20141101211558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "company_profiles", force: true do |t|
-    t.integer "user_id"
-    t.string  "website"
-    t.text    "description"
-    t.string  "position"
-  end
 
   create_table "countries", force: true do |t|
     t.string "name"
@@ -41,14 +34,8 @@ ActiveRecord::Schema.define(version: 20141027141417) do
     t.string  "name"
   end
 
-  create_table "student_profiles", force: true do |t|
-    t.integer  "user_id"
-    t.string   "school"
-    t.string   "major"
-    t.string   "academic_status"
-    t.string   "study_field"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "study_fields", force: true do |t|
+    t.string "name"
   end
 
   create_table "users", force: true do |t|
@@ -71,10 +58,19 @@ ActiveRecord::Schema.define(version: 20141027141417) do
     t.string   "unconfirmed_email"
     t.integer  "role"
     t.string   "phone_number"
-    t.date     "birthday"
     t.boolean  "type"
     t.integer  "country_id"
     t.integer  "province_id"
+    t.string   "academic_status"
+    t.string   "study_field"
+    t.string   "school"
+    t.string   "major"
+    t.string   "position"
+    t.string   "company_name"
+    t.string   "website"
+    t.text     "description"
+    t.integer  "birth_year"
+    t.integer  "study_field_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
