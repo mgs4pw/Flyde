@@ -3,9 +3,9 @@ class UsersController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def create
-    raise
     if user_signed_in?
       render(:json => @user = current_user) and return
+    end
   end
 
   def edit
