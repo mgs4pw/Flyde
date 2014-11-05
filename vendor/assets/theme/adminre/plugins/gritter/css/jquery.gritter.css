@@ -79,7 +79,7 @@
 .gritter-close:active,
 .gritter-close:focus {
     color: #fff;
-    background-color: black;
+    background-color: none;
 }
 .gritter-close:after {
     content: "\e36c";

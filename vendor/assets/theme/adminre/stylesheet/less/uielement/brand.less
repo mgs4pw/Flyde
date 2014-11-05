@@ -12,7 +12,7 @@
 }
 .logo-text {
     width: 110px;
-    background-image: url("../image/logo/logo-text.png");
+    background-image: url("@{image-base-url}/logo/logo-text.png");
     background-repeat: no-repeat;
     background-size: 110px 50px;
 
@@ -20,12 +20,12 @@
         margin-left: -13px;
     }
     &.inverse {
-        background-image: url("../image/logo/logo-text-inverse.png");
+        background-image: url("@{image-base-url}/logo/logo-text-inverse.png");
     }
 }
 .logo-figure {
     width: 32px;
-    background-image: url("../image/logo/logo-figure.png");
+    background-image: url("@{image-base-url}/logo/logo-figure.png");
     background-repeat: no-repeat;
     background-position: 0px 8px;
     background-size: 32px 32px;
@@ -34,7 +34,7 @@
         margin-left: -13px;
     }
     &.inverse {
-        background-image: url("../image/logo/logo-figure-inverse.png");
+        background-image: url("@{image-base-url}/logo/logo-figure-inverse.png");
     }
 }
 
@@ -48,19 +48,19 @@ only screen and (-moz-min-device-pixel-ratio: 1.5),
 only screen and (-o-min-device-pixel-ratio: 3/2),
 only screen and (min-device-pixel-ratio: 1.5) {
     .logo-text {
-        background-image: url("../image/logo/logo-text@2x.png");
+        background-image: url("@{image-base-url}/logo/logo-text@2x.png");
         background-size: 110px 50px;
 
         &.inverse {
-            background-image: url("../image/logo/logo-text-inverse@2x.png");
+            background-image: url("@{image-base-url}/logo/logo-text-inverse@2x.png");
         }
     }
     .logo-figure {
-        background-image: url("../image/logo/logo-figure@2x.png");
+        background-image: url("@{image-base-url}/logo/logo-figure@2x.png");
         background-size: 32px 32px;
 
         &.inverse {
-            background-image: url("../image/logo/logo-figure-inverse@2x.png");
+            background-image: url("@{image-base-url}/logo/logo-figure-inverse@2x.png");
         }
     }
 }

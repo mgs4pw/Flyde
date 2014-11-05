@@ -29,7 +29,7 @@
 }
 
 /* Header Main */
-#header.navbar {
+#header.navbar  {
     position: relative;
     z-index: 1030;
     width: 100%;
@@ -57,7 +57,7 @@
     // Navbar header
     // -----------------------------------
     .navbar-header {
-        background-color: @accent-base-color;
+        background-color: @logo-background;
         height: @header-height;
         float: none;
 
@@ -524,4 +524,278 @@
     &.navbar-fixed-top {
         position: fixed;
     }
+}
+
+#model-messages {
+  .navbar-nav {
+    > li {
+        float: left;
+
+        > a {
+            padding: 0px 15px;
+            height: @header-height;
+            line-height: @header-height;
+            color: lighten(@dark, 35%);
+            text-shadow: none;
+
+            &:hover,
+            &:focus {
+                background-color: transparent;
+                color: lighten(@dark, 30%);
+            }
+
+            &:active,
+            &.active {
+                background-color: lighten(@gray, 3%);
+                color: lighten(@dark, 25%);
+            }
+
+            > .meta {
+                display: table;
+                width: 100%;
+
+                > .avatar {
+                    display: table-cell;
+                    vertical-align: middle;
+                    width: 32px;
+                    height: 32px;
+
+                    > img {
+                        display: block;
+                        width: 100%;
+                    }
+                }
+                > .text {
+                    font-size: 13px;
+                    font-weight: 600;
+                }
+                > .icon {
+                    display: table-cell;
+                    vertical-align: middle;
+                    font-size: 16px;
+                    min-width: 16px;
+                    text-align: center;
+                }
+                > .label,
+                > .badge {
+                    display: block;
+                    position: absolute;
+                    top: 8px;
+                    left: 5px;
+                    min-width: 18px;
+                    background-color: @danger;
+                    border-radius: 50%;
+                    -webkit-box-shadow: 0px 0px 0px 1px fade(@white, 96%);
+                    box-shadow: 0px 0px 0px 1px fade(@white, 96%);
+
+                    &.pull-right {
+                        left: auto;
+                        right: 5px;
+                    }
+                }
+                > .hasnotification {
+                    position: absolute;
+                    top: 12px;
+                    left: 10px;
+                    -webkit-box-shadow: 0px 0px 0px 1px fade(@white, 96%);
+                    box-shadow: 0px 0px 0px 1px fade(@white, 96%);
+
+                    &.pull-right {
+                        left: auto;
+                        right: 12px;
+                    }
+                }
+                > .arrow {
+                    display: table-cell;
+                    vertical-align: middle;
+                    text-align: right;
+                    font-family: "iconfont";
+                    font-size: 12px;
+                    width: 12px;
+                    height: 12px;
+
+                    &:after {
+                        content: "\e6be";
+                    }
+                }
+                > .caret {
+                    margin-top: -1px;
+                    margin-left: 5px;
+                }
+            }
+            &.sidebar-minimize {
+                > .meta {
+                    > .icon:after {
+                        display: inline-block;
+                        vertical-align: top;
+                        font-family: "iconfont";
+                        content: "\e4f3";
+                    }
+                }
+                &.minimized {
+                    > .meta {
+                        > .icon:after {
+                            content: "\e47a";
+                        }
+                    }
+                }
+            }
+        }
+
+        &.active {
+            > a {
+                background-color: lighten(@gray, 3%);
+                color: lighten(@dark, 25%);
+
+                &:hover,
+                &:focus,
+                &:active {
+                    background-color: lighten(@gray, 3%);
+                    color: lighten(@dark, 25%);
+                }
+            }
+        }
+
+        &.open {
+            > a {
+                background-color: lighten(@gray, 3%);
+                color: lighten(@dark, 25%);
+
+                &:hover,
+                &:focus,
+                &:active {
+                    background-color: lighten(@gray, 3%);
+                    color: lighten(@dark, 25%);
+                }
+
+                // dropdown arrow
+                &:before,
+                &:after {
+                    position: absolute;
+                    content: "";
+                    left: 50%;
+                    width: 0px;
+                    height: 0px;
+                    border-style: solid;
+                }
+                &:before {
+                    z-index: 1002;
+                    bottom: -6px;
+                    margin-left: -9px;
+                    border-width: 0 9px 9px 9px;
+                    border-color: transparent transparent lighten(@border-color, 6%) transparent;
+                }
+                &:after {
+                    z-index: 1003;
+                    bottom: -7px;
+                    margin-left: -8px;
+                    border-width: 0 8px 8px 8px;
+                    border-color: transparent transparent @white transparent;
+                }
+
+                > .meta {
+                    > .arrow {
+                        &:after {
+                            content: "\e6bf";
+                        }
+                    }
+                }
+            }
+        }
+    }
+  
+    > .dropdown {
+        > .dropdown-menu {
+            position: absolute;
+            margin-top: 5px;
+            left: 5px;
+            background-color: @white;
+            border: 1px solid lighten(@border-color, 6%);
+            border-radius: @border-radius;
+            -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+            box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+        }
+        &.custom {
+            position: static;
+
+            > .dropdown-menu {
+                top: auto;
+                left: 5px;
+                right: 5px;
+                padding: 0px;
+                border-color: lighten(@border-color, 6%);
+
+                // dropdown - header
+                // -----------------------------------
+                > .dropdown-header {
+                    display: table;
+                    width: 100%;
+                    background-color: darken(@white, 3%);
+                    border-bottom: 1px solid lighten(@border-color, 8%);
+                    padding: 0px 15px !important;
+                    height: @header-height - 14;
+                    line-height: @header-height - 14;
+                    color: lighten(@dark, 10%);
+
+                    border-top-left-radius: @border-radius;
+                    border-top-right-radius: @border-radius;
+
+                    > .title {
+                        display: table-cell;
+                        font-weight: 600;
+                    }
+                    > .option {
+                        display: table-cell;
+                        font-weight: normal;
+                    }
+                }
+
+                // dropdown - body and viewport
+                // -----------------------------------
+                > .viewport,
+                .dropdown-body {
+                    height: 320px;
+                }
+                .dropdown-body {
+                    overflow-y: scroll;
+                    -ms-overflow-style: -ms-autohiding-scrollbar;
+                    -webkit-overflow-scrolling: touch;
+                }
+
+                // dropdown - form reset
+                // -----------------------------------
+                form,
+                .form-horizontal {
+                    padding: 6px 15px;
+                    background-color: darken(@white, 2%);
+                    border-bottom: 1px solid lighten(@border-color, 8%);
+                }
+            }
+
+            &.open {
+                > .dropdown-toggle:before {
+                    border-color: transparent transparent lighten(@border-color, 6%) transparent;
+                }
+                > .dropdown-toggle:after {
+                    border-color: transparent transparent darken(@white, 3%) transparent;
+                }
+            }
+
+            &.mega {
+                > .dropdown-menu {
+                    padding: 5px 0px;
+                }
+
+                &.open {
+                    > .dropdown-toggle:before {
+                        border-color: transparent transparent lighten(@border-color, 6%) transparent;
+                    }
+                    > .dropdown-toggle:after {
+                        border-color: transparent transparent @white transparent;
+                    }
+                }
+            }
+        }
+    }
+  }
 }

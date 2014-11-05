@@ -72,7 +72,7 @@ $(function(){
         **/
         typeahead: null,
         /**
-        Whether to show `clear` button 
+        Whether to show `clear` button
         
         @property clear 
         @type boolean

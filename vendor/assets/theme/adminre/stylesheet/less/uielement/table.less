@@ -211,10 +211,13 @@
 /* 
  * striped 
  */
-.table-striped > tbody > tr:nth-child(odd) > td,
 .table-striped > tbody > tr.odd > td, 
-.table-striped > tbody > tr:nth-child(odd) > th,
 .table-striped > tbody > tr.odd > th {
+    background-color: @gray;
+}
+
+.table-striped > tbody > tr.even > td, 
+.table-striped > tbody > tr.even > th {
     background-color: lighten(@gray, 5%);
 }
 /* 

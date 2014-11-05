@@ -3,12 +3,12 @@
  * Page/renders: pages-people-directory.html
  * Plugins used: shuffle
  * ======================================================================== */
-$(function () {
+jQuery(document).ready(function() {
     // Shuffle
     // ================================
     var $grid   = $("#shuffle-grid"),
         $filter = $("#shuffle-filter"),
-        $sizer  = $grid.find("shuffle-sizer");
+        $sizer  = $grid.find("shuffle").first();
     
     // instatiate shuffle
     $grid.shuffle({
@@ -27,7 +27,7 @@ $(function () {
                     return false;
                 }
 
-                var text = $.trim($el.find(".panel-body > h5").text()).toLowerCase();
+                var text = $.trim($el.find(".panel-body .search-target").text()).toLowerCase();
                 return text.indexOf(val) !== -1;
             });
         });
@@ -37,4 +37,8 @@ $(function () {
     $("html")
         .on("fa.sidebar.minimize", function () { $grid.shuffle("update"); })
         .on("fa.sidebar.maximize", function () { $grid.shuffle("update"); });
+
+    $grid.imagesLoaded(function(){
+      $grid.shuffle('layout');
+    });
 });

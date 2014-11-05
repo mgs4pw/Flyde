@@ -168,7 +168,7 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
             }
             /**        
             Fired when form is shown
-            @event show 
+            @event show
             @param {Object} event event object
             **/                    
             this.$div.triggerHandler('show');
@@ -253,7 +253,7 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
                     return;
                 }
 
-                //if success callback returns string -->  keep form open, show error and activate input               
+                //if success callback returns string -->  keep form open, show error and activate input
                 if(typeof res === 'string') {
                     this.error(res);
                     this.showForm();
@@ -579,7 +579,7 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
         **/        
         ajaxOptions: null,
         /**
-        Where to show buttons: left(true)|bottom|false  
+        Where to show buttons: left(true)|bottom|false
         Form without buttons is auto-submitted.
 
         @property showbuttons 
@@ -1091,11 +1091,11 @@ Applied as jQuery method.
             this.tip().addClass(this.containerClass);
 
             /*
-            Currently, form is re-rendered on every show. 
+            Currently, form is re-rendered on every show.
             The main reason is that we dont know, what will container do with content when closed:
             remove(), detach() or just hide() - it depends on container.
             
-            Detaching form itself before hide and re-insert before show is good solution, 
+            Detaching form itself before hide and re-insert before show is good solution,
             but visually it looks ugly --> container changes size before hide.  
             */             
             
@@ -2165,8 +2165,8 @@ Makes editable any HTML element on the page. Applied as jQuery method.
         disabled: false,
         /**
         How to toggle editable. Can be <code>click|dblclick|mouseenter|manual</code>.   
-        When set to <code>manual</code> you should manually call <code>show/hide</code> methods of editable.    
-        **Note**: if you call <code>show</code> or <code>toggle</code> inside **click** handler of some DOM element, 
+        When set to <code>manual</code> you should manually call <code>show/hide</code> methods of editable.
+        **Note**: if you call <code>show</code> or <code>toggle</code> inside **click** handler of some DOM element,
         you need to apply <code>e.stopPropagation()</code> because containers are being closed on any click on document.
         
         @example
@@ -2996,7 +2996,7 @@ $(function(){
         placeholder: null,
         
         /**
-        Whether to show `clear` button 
+        Whether to show `clear` button
         
         @property clear 
         @type boolean

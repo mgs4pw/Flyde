@@ -354,6 +354,7 @@
     // You can have tooltips use a css class other than jqstooltip by specifying tooltipClassname
     defaultStyles = '.jqstooltip { ' +
             'position: absolute;' +
+            'width: auto !important;' +
             'left: 0px;' +
             'top: 0px;' +
             'visibility: hidden;' +
@@ -370,6 +371,7 @@
             'z-index: 10000;' +
             '}' +
             '.jqsfield { ' +
+            'width: auto !important;' +
             'color: white;' +
             'font: 10px arial, san serif;' +
             'text-align: left;' +
@@ -1261,6 +1263,7 @@
                     }
                 }
             }
+
             if (entries.length) {
                 return header + entries.join('\n');
             }
