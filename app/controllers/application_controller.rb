@@ -5,12 +5,13 @@ class ApplicationController < ActionController::Base
   
 
   # def after_sign_in_path_for(resource)
-  #   if resource.first_name.blank?
-  #     profile_path
+  #   if resource.user_type == USER::STUDENT
+      
   #   else
-  #     dashboard_path
+      
   #   end
   # end
+
   def get_basedata
     @countries = Country.includes(:provinces).all
     @study_fields = StudyField.all
