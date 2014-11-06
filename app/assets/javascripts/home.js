@@ -89,6 +89,7 @@ $(function () {
         return false;
     });
 
+    // Sign in process
     $("form#sign_in_user").submit(function(e) {
         $.ajax({
             url: $('#sign_in_user').attr('action'),
@@ -97,6 +98,13 @@ $(function () {
             data: $('#sign_in_user').serializeArray(),
             success: function(e) {
                 console.log(e);
+                if (e.user_type == "company") {
+                    location.href="/company_dashboard";
+                } else if (e.user_type == "student") {
+                    location.href="/student_dashboard";
+                } else {
+                    location.href="/";
+                }
             },
             error: function(e) {
                 console.log(e);

@@ -1,0 +1,204 @@
+/! START Template Header
+header#header.navbar.navbar-fixed-top
+  /! START navbar header
+  .navbar-header
+    /! Brand
+    a.navbar-brand href="javascript:void(0);" 
+      span.logo-figure
+      span.logo-text
+    /! / Brand
+  /! START Toolbar
+  .navbar-toolbar.clearfix
+    /! START Right nav
+    ul.nav.navbar-nav.navbar-right
+      /! Profile dropdown
+      li.dropdown.profile
+        a.dropdown-toggle data-toggle="dropdown" href="javascript:void(0);" 
+          span.meta
+            span.avatar
+              img.img-circle alt="" src="../image/avatar/avatar7.jpg"
+            span.text.hidden-xs.hidden-sm.pl5 Sign Out
+/! / END Template Header
+
+/! START Template Main
+section#main role="main" 
+  /! START Template Container
+  .container
+
+    /! START row
+    .row
+      /! Left / Top Side
+      .col-sm-3
+        /! figure with progress
+        ul.list-table
+          li.text-center style="width:70px;" 
+            img alt="" src="../image/avatar/avatar7.jpg" width="100%"
+
+        /! tab menu
+        ul.list-group.list-group-tabs
+          li.list-group-item.active
+            a data-toggle="tab" href="#profile" 
+              i.ico-user2.mr5
+              | Profile
+          li.list-group-item
+            a data-toggle="tab" href="#account" 
+              i.ico-archive2.mr5
+              | Account
+          li.list-group-item
+            a data-toggle="tab" href="#security" 
+              i.ico-shield3.mr5
+              | Security &amp; privacy
+          li.list-group-item
+            a data-toggle="tab" href="#password" 
+              i.ico-key2.mr5
+              | Password
+        /! tab menu
+       
+      /! / Left / Top Side
+      /! Left / Bottom Side
+      .col-sm-9
+        /! START Tab-content
+        .tab-content
+          /! tab-pane: profile
+          #profile.tab-pane.active
+            /! form profile
+            form.panel.form-horizontal.form-bordered name="form-profile" 
+              .panel-body.pt0.pb0
+                .form-group.header.bgcolor-default
+                  .col-md-12
+                    h4.semibold.text-primary Personal Information
+                .form-group
+                  .row
+                    .col-md-6
+                      label.col-sm-4.control-label Name
+                      .col-sm-7
+                        input.form-control name="name" type="text" value="Erich Reyes"
+                    .col-md-6
+                      label.col-sm-4.control-label Study Field
+                      .col-sm-7
+                        input.form-control name="name" type="text" value=""
+                .form-group
+                  .row 
+                    .col-md-6
+                      label.col-sm-4.control-label Year of Birth
+                      .col-sm-7
+                        input.form-control name="location" type="text"
+                    .col-md-6
+                      label.col-sm-4.control-label Country
+                      .col-sm-7
+                        input.form-control name="name" type="text" value="United States"
+                .form-group
+                  .row
+                    .col-md-6
+                      label.col-sm-4.control-label School
+                      .col-sm-7
+                        input.form-control name="website" type="text"
+                    .col-md-6
+                      label.col-sm-4.control-label Province
+                      .col-sm-7
+                        input.form-control name="name" type="text" value="New York"
+                .form-group
+                  .row
+                    .col-md-6
+                      label.col-sm-4.control-label Major
+                      .col-sm-7
+                        input.form-control name="website" type="text"
+                    .col-md-6
+                      label.col-sm-4.control-label Academic Status
+                      .col-sm-7
+                        input.form-control name="name" type="text" value="New York"
+                .form-group
+                  .row
+                    .col-md-6
+                      label.col-sm-4.control-label Phone Number
+                      .col-sm-7
+                        input.form-control name="name" type="text" value="+1-555-555-5555"
+                    .col-md-6
+                      label.col-sm-4.control-label Photo
+                      .col-sm-7
+                        .btn-group.pr5
+                          img.img-circle.img-bordered alt="" src="../image/avatar/avatar7.jpg" width="34px"
+                        .btn-group
+                          button.btn.btn-default type="button"  Change photo
+                          button.btn.btn-default.dropdown-toggle data-toggle="dropdown" type="button" 
+                            span.caret
+                          ul.dropdown-menu role="menu" 
+                            li
+                              a href="#"  Upload photo
+                            li
+                              a href="#"  Remove                  
+              .panel-footer.text-right
+                button.btn.btn-success type="submit"  Save changes
+
+          /! tab-pane: Experiences
+          #profile.tab-pane.active
+            /! form profile
+            form.panel.form-horizontal.form-bordered
+              .panel-body.pt0.pb0
+                .form-group.header.bgcolor-default
+                  .col-md-8.text-left
+                    h4.semibold.text-primary Experiences
+                  .col-md-4.text-right
+                    button.btn.btn-success type="submit"  Add
+                br
+                .table-responsive.panel-collapse.pull.out
+                  table#table1.table.table-bordered.table-hover
+                    thead
+                      tr
+                        th width="50%" Experience
+                        th width="30%" Date
+                        th width="20%"
+                    tbody
+                      tr
+                        td Ruby on Rails development.
+                        td 2014/10 ~ 2014/11
+                        td.text-center
+                          /! button toolbar
+                          .toolbar
+                            .btn-group
+                              button.btn.btn-sm.btn-danger type="button"
+                                span.ico-remove
+                                |  Delete
+                          /! / button toolbar
+                      tr
+                        td Ruby on Rails development.
+                        td 2014/10 ~ 2014/11
+                        td.text-center
+                          /! button toolbar
+                          .toolbar
+                            .btn-group
+                              button.btn.btn-sm.btn-danger type="button"
+                                span.ico-remove
+                                |  Delete
+                          /! / button toolbar
+                br
+
+          /! tab-pane: Skills
+          #profile.tab-pane.active
+            /! form profile
+            form.panel.form-horizontal.form-bordered
+              .panel-body.pt0.pb0
+                .form-group.header.bgcolor-default
+                  .col-md-6.text-left
+                    h4.semibold.text-primary Skill Sets
+                  .col-md-6.text-right
+                    .col-sm-9.text-right
+                      input.form-control name="name" type="text" value="Ruby on Rails"
+                    .col-sm-3.text-right
+                      button.btn.btn-success type="submit"  Add
+                br
+                .row
+                  .col-md-4
+                    /! START panel
+                    .panel.panel-teal
+                      /! panel heading/header
+                      .panel-heading
+                        h3.panel-title Teal
+                        /! panel toolbar
+                        .panel-toolbar.text-right
+                          /! option
+                          .option
+                            button.btn data-parent=".col-md-4" data-toggle="panelremove" 
+                              i.remove
+              
+

@@ -18,8 +18,8 @@ class SessionsController < Devise::SessionsController
     scope = Devise::Mapping.find_scope!(resource_or_scope)
     resource ||= resource_or_scope
     sign_in(scope, resource) unless warden.user(scope) == resource
-    
-    render :json => {:success => true} and return
+
+    render :json => {:success => true, :user_type => resource.user_type}, status: :created and return
   end
  
   def failure

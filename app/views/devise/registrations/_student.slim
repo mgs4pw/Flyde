@@ -50,7 +50,7 @@
                   = f.label :study_field_id, 'Field of Study', class: 'control-label'
                   = f.select :study_field_id, @study_fields.collect {|c| [c.name, c.id]}, {}, class: 'form-control', placeholder: "Select..."
                 .col-sm-6.text-center
-                  = f.button 'Submit', class: 'btn btn-default'
+                  = f.button 'Submit', class: 'btn btn-success btn-block'
             = f.hidden_field :user_type, value: User::STUDENT
         br
         br
