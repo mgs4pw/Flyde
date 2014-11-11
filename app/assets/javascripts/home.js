@@ -34,14 +34,14 @@ $(function () {
         $("#signup_company").modal('show');
         $("#signup_main").modal('hide');
 
-        $("div#singup_company_error").fadeOut();
+        $("div#singup_company_error").hide();
     });
 
     $("#gotoStudentSignup").click(function() {
         $("#signup_student").modal('show');
         $("#signup_main").modal('hide');
 
-        $("div#singup_company_error").fadeOut();
+        $("div#singup_student_error").hide();
     });
 
     // User sign up Ajax call
@@ -56,11 +56,13 @@ $(function () {
             success: function(e) {
                 console.log(e);
                 $("div#singup_company_error div").html(signup_success);
+                $("div#singup_company_error").removeClass("alert-danger").addClass("alert-success");
                 $("div#singup_company_error").fadeIn();
             },
             error: function(e) {
                 console.log(e);
                 $("div#singup_company_error div").html(e.responseJSON.errors);
+                $("div#singup_company_error").removeClass("alert-success").addClass("alert-danger");
                 $("div#singup_company_error").fadeIn();
             }
         });
@@ -77,11 +79,13 @@ $(function () {
             success: function(e) {
                 console.log(e);
                 $("div#singup_student_error div").html(signup_success);
+                $("div#singup_student_error").removeClass("alert-danger").addClass("alert-success");
                 $("div#singup_student_error").fadeIn();
             },
             error: function(e) {
                 console.log(e);
                 $("div#singup_student_error div").html(e.responseJSON.errors);
+                $("div#singup_student_error").removeClass("alert-success").addClass("alert-danger");
                 $("div#singup_student_error").fadeIn();
             }
         });
