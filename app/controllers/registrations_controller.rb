@@ -34,7 +34,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def configure_permitted_parameters
-     params.require(:user).permit :email, :password, :name, :company_name, :position, :country, :phone_number,
+     params.require(:user).permit :email, :password, :name, :company_name, :position, :phone_number,
                                 :birth_year, :country_id, :province_id, :academic_status, :study_field_id, :user_type
   end
 

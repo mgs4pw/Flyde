@@ -32,7 +32,7 @@
               .row
                 .col-sm-6
                   = f.label :birth_year, 'Year of Birth', class: 'control-label'
-                  = f.number_field :birth_year, class: 'control-label', placeholder: "1991"
+                  = f.number_field :birth_year, class: 'form-control', placeholder: "1991"
                 .col-sm-6
                   = f.label :country_id, 'Country (Language)', class: 'control-label'
                   = f.select :country_id, @countries.collect {|c| [c.name, c.id]}, {}, class: 'form-control'

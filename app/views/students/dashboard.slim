@@ -57,89 +57,72 @@ section#main role="main"
       /! / Left / Top Side
       /! Left / Bottom Side
       .col-sm-9
+        = render 'shared/messages'
         /! START Tab-content
         .tab-content
           /! tab-pane: profile
           #profile.tab-pane.active
             /! form profile
-            form.panel.form-horizontal.form-bordered name="form-profile" 
-              .panel-body.pt0.pb0
-                .form-group.header.bgcolor-default
-                  .col-md-12
-                    h4.semibold.text-primary Personal Information
+            = form_for @student, url: update_student_profile_path, method: :post, html: { multipart: true, class: 'panel panel-default' } do |f|
+              /!= render partial: 'shared/form_errors', locals: {model: f.object}
+              .panel-heading.pt0.pb0
+                h4.semibold.text-primary Personal Information
+              .panel-body
+                .form-group
+                  .row
+                    .col-sm-6
+                      = f.label :name, 'Name', class: 'control-label'
+                      = f.text_field :name, class: "form-control", placeholder: "Your name"
+                    .col-sm-6
+                      = f.label :email, 'Email', class: 'control-label'
+                      = f.email_field :email, class: "form-control", placeholder: "you@example.com", type: "email"
+                .form-group
+                  .row
+                    .col-sm-6
+                      = f.label :password, 'Password', class: 'control-label'
+                      = f.text_field :password, class: 'form-control', type: "password"
+                    .col-sm-6
+                      = f.label :password_confirmation, 'Password Confirmation', class: 'control-label'
+                      = f.text_field :password_confirmation, class: 'form-control', type: "password"
+                .form-group
+                  .row
+                    .col-sm-6
+                      = f.label :phone_number, 'Phone Number', class: 'control-label'
+                      = f.telephone_field :phone_number, class: "form-control", placeholder: "+1-555-555-5555"
+                    .col-sm-6
+                      = f.label :school, 'School', class: 'control-label'
+                      = f.text_field :school, class: "form-control", placeholder: "School"
+                .form-group
+                  .row
+                    .col-sm-6
+                      = f.label :birth_year, 'Year of Birth', class: 'control-label'
+                      = f.number_field :birth_year, class: 'form-control', placeholder: "1991"
+                    .col-sm-6
+                      = f.label :academic_status, 'Current Academic Status', class: 'control-label'
+                      = f.text_field :academic_status, class: 'form-control', placeholder: "High School"
+                .form-group
+                  .row
+                    .col-sm-6
+                      = f.label :study_field_id, 'Field of Study', class: 'control-label'
+                      = f.select :study_field_id, @study_fields.collect {|c| [c.name, c.id]}, {}, class: 'form-control', placeholder: "Select..."
+                    .col-sm-6
+                      = f.label :major, 'Major', class: 'control-label'
+                      = f.text_field :major, class: "form-control", placeholder: "Major"
                 .form-group
                   .row
                     .col-md-6
-                      label.col-sm-4.control-label Name
-                      .col-sm-7
-                        input.form-control name="name" type="text" value="Erich Reyes"
-                    .col-md-6
-                      label.col-sm-4.control-label Study Field
-                      .col-sm-7
-                        input.form-control name="name" type="text" value=""
-                .form-group
-                  .row 
-                    .col-md-6
-                      label.col-sm-4.control-label Year of Birth
-                      .col-sm-7
-                        input.form-control name="location" type="text"
-                    .col-md-6
-                      label.col-sm-4.control-label Country
-                      .col-sm-7
-                        input.form-control name="name" type="text" value="United States"
-                .form-group
-                  .row
-                    .col-md-6
-                      label.col-sm-4.control-label School
-                      .col-sm-7
-                        input.form-control name="website" type="text"
-                    .col-md-6
-                      label.col-sm-4.control-label Province
-                      .col-sm-7
-                        input.form-control name="name" type="text" value="New York"
-                .form-group
-                  .row
-                    .col-md-6
-                      label.col-sm-4.control-label Major
-                      .col-sm-7
-                        input.form-control name="website" type="text"
-                    .col-md-6
-                      label.col-sm-4.control-label Academic Status
-                      .col-sm-7
-                        input.form-control name="name" type="text" value="New York"
-                .form-group
-                  .row
-                    .col-md-6
-                      label.col-sm-4.control-label Phone Number
-                      .col-sm-7
-                        input.form-control name="name" type="text" value="+1-555-555-5555"
-                    .col-md-6
-                      label.col-sm-4.control-label Photo
-                      .col-sm-7
-                        .btn-group.pr5
-                          img.img-circle.img-bordered alt="" src="../image/avatar/avatar7.jpg" width="34px"
-                        .btn-group
-                          button.btn.btn-default type="button"  Change photo
-                          button.btn.btn-default.dropdown-toggle data-toggle="dropdown" type="button" 
-                            span.caret
-                          ul.dropdown-menu role="menu" 
-                            li
-                              a href="#"  Upload photo
-                            li
-                              a href="#"  Remove                  
+                      = f.label :photo, 'Photo', class: 'control-label'
+                      = f.file_field, :photo, class: 'form-control'
               .panel-footer.text-right
-                button.btn.btn-success type="submit"  Save changes
+                = f.button 'Save Changes', class: 'btn btn-success'
 
           /! tab-pane: Experiences
           #profile.tab-pane.active
             /! form profile
-            form.panel.form-horizontal.form-bordered
-              .panel-body.pt0.pb0
-                .form-group.header.bgcolor-default
-                  .col-md-8.text-left
-                    h4.semibold.text-primary Experiences
-                  .col-md-4.text-right
-                    button.btn.btn-success type="submit"  Add
+            = form_for @experience, url: create_student_experience_path, method: :post, html: { class: 'panel panel-default' } do |e|
+              .panel-heading.pt0.pb0
+                h4.semibold.text-primary Experiences
+              .panel-body
                 br
                 .table-responsive.panel-collapse.pull.out
                   table#table1.table.table-bordered.table-hover
@@ -149,29 +132,27 @@ section#main role="main"
                         th width="30%" Date
                         th width="20%"
                     tbody
-                      tr
-                        td Ruby on Rails development.
-                        td 2014/10 ~ 2014/11
-                        td.text-center
-                          /! button toolbar
-                          .toolbar
-                            .btn-group
-                              button.btn.btn-sm.btn-danger type="button"
-                                span.ico-remove
-                                |  Delete
-                          /! / button toolbar
-                      tr
-                        td Ruby on Rails development.
-                        td 2014/10 ~ 2014/11
-                        td.text-center
-                          /! button toolbar
-                          .toolbar
-                            .btn-group
-                              button.btn.btn-sm.btn-danger type="button"
-                                span.ico-remove
-                                |  Delete
-                          /! / button toolbar
+                      - @experiences.each do |exp|
+                        tr
+                          td = exp.experience
+                          td = exp.date_from.to_s + " ~ " + exp.date_to.to_s
+                          td.text-center
+                            button.btn.btn-sm.btn-danger type="button"
+                              span.ico-remove Delete
                 br
+                .form-group
+                  .row
+                    .col-sm-4
+                      = e.label :experience, 'Experience', class: 'control-label'
+                      = e.text_field :experience, class: "form-control"
+                    .col-sm-4
+                      = e.label :date_from, 'From', class: 'control-label'
+                      = e.date_select :date_from, {start_year: 1980}, class: 'form-control'
+                    .col-sm-4
+                      = e.label :date_to, 'To', class: 'control-label'
+                      = e.date_select :date_to, {start_year: 1980}, class: 'form-control'
+              .panel-footer.text-right
+                = e.button 'Add', class: 'btn btn-success'
 
           /! tab-pane: Skills
           #profile.tab-pane.active

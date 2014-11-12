@@ -15,6 +15,7 @@ gem 'slim-rails'
 gem 'therubyracer', :platform=>:ruby
 gem 'thin'
 gem 'rails_12factor', group: :production
+gem 'paperclip'
 
 group :development do
   gem 'better_errors'
@@ -24,6 +25,5 @@ group :development do
   gem 'rails_layout'
 end
 group :development, :test do
-  gem 'pry-rails'
-  gem 'pry-rescue'
+  gem 'pry'
 end

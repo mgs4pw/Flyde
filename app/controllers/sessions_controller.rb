@@ -21,6 +21,12 @@ class SessionsController < Devise::SessionsController
 
     render :json => {:success => true, :user_type => resource.user_type}, status: :created and return
   end
+
+  def destroy
+    sign_out
+
+    redirect_to root_path
+  end
  
   def failure
     

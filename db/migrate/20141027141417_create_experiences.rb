@@ -3,7 +3,7 @@ class CreateExperiences < ActiveRecord::Migration
     create_table :experiences do |t|
     	t.references :user
 
-    	t.string :experiencest
+    	t.string :experience
     	t.date :date_from
     	t.date :date_to
 
