@@ -24,7 +24,6 @@ class StudentsController < ApplicationController
   def create_experience
     @experience = current_user.experiences.build permit_experience_params
 
-    binding.pry
     if @experience.save
       redirect_to student_dashboard_path, :notice => "Experience is successfully saved."
     else
@@ -59,7 +58,6 @@ class StudentsController < ApplicationController
   end
 
   def permit_experience_params
-    binding.pry
     params.require(:experience).permit :experience, :date_from, :date_to
   end
 end
