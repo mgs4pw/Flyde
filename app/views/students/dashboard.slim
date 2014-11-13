@@ -4,8 +4,7 @@ header#header.navbar.navbar-fixed-top
   .navbar-header
     /! Brand
     a.navbar-brand href="javascript:void(0);" 
-      span.logo-figure
-      span.logo-text
+      span.logo-figure.dream-logo-figure
     /! / Brand
   /! START Toolbar
   .navbar-toolbar.clearfix
@@ -16,7 +15,7 @@ header#header.navbar.navbar-fixed-top
         a.dropdown-toggle data-toggle="dropdown" href="javascript:void(0);" 
           span.meta
             span.avatar
-              img.img-circle alt="" src="../image/avatar/avatar7.jpg"
+              = image_tag @student.photo.url, class: 'img-circle'
             span.text.hidden-xs.hidden-sm.pl5 Sign Out
 /! / END Template Header
 
@@ -31,8 +30,8 @@ section#main role="main"
       .col-sm-3
         /! figure with progress
         ul.list-table
-          li.text-center style="width:70px;" 
-            img alt="" src="../image/avatar/avatar7.jpg" width="100%"
+          li.text-center
+            = image_tag @student.photo.url, class: '', width: "100%"
 
         /! tab menu
         ul.list-group.list-group-tabs
@@ -112,14 +111,14 @@ section#main role="main"
                   .row
                     .col-md-6
                       = f.label :photo, 'Photo', class: 'control-label'
-                      = f.file_field, :photo, class: 'form-control'
+                      = f.file_field :photo, class: 'form-control'
               .panel-footer.text-right
                 = f.button 'Save Changes', class: 'btn btn-success'
 
           /! tab-pane: Experiences
           #profile.tab-pane.active
             /! form profile
-            = form_for @experience, url: create_student_experience_path, method: :post, html: { class: 'panel panel-default' } do |e|
+            .form.panel.panel-default
               .panel-heading.pt0.pb0
                 h4.semibold.text-primary Experiences
               .panel-body
@@ -137,22 +136,24 @@ section#main role="main"
                           td = exp.experience
                           td = exp.date_from.to_s + " ~ " + exp.date_to.to_s
                           td.text-center
-                            button.btn.btn-sm.btn-danger type="button"
+                            = link_to student_experience_path(exp), class: 'btn btn-danger', method: :delete, 'data-confirm' => 'Are you sure?' do
                               span.ico-remove Delete
                 br
-                .form-group
-                  .row
-                    .col-sm-4
-                      = e.label :experience, 'Experience', class: 'control-label'
-                      = e.text_field :experience, class: "form-control"
-                    .col-sm-4
-                      = e.label :date_from, 'From', class: 'control-label'
-                      = e.date_select :date_from, {start_year: 1980}, class: 'form-control'
-                    .col-sm-4
-                      = e.label :date_to, 'To', class: 'control-label'
-                      = e.date_select :date_to, {start_year: 1980}, class: 'form-control'
-              .panel-footer.text-right
-                = e.button 'Add', class: 'btn btn-success'
+                = form_for @experience, url: create_student_experience_path, method: :post do |e|
+                  .form-group
+                    .row
+                      .col-sm-4
+                        = e.label :experience, 'Experience', class: 'control-label'
+                        = e.text_field :experience, class: "form-control"
+                      .col-sm-4
+                        = e.label :date_from, 'From', class: 'control-label'
+                        /!= e.date_select :date_from, {start_year: 1980}, class: 'form-control'
+                        = e.text_field :date_from,  class: 'form-control', placeholder: "Select a date"
+                      .col-sm-4
+                        = e.label :date_to, 'To', class: 'control-label'
+                        = e.text_field :date_to,  class: 'form-control', placeholder: "Select a date"
+                  .panel-footer.text-right
+                    = e.button 'Add', class: 'btn btn-success'
 
           /! tab-pane: Skills
           #profile.tab-pane.active

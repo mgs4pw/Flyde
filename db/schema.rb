@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20141101211558) do
 
   create_table "experiences", force: true do |t|
     t.integer  "user_id"
-    t.string   "experiencest"
+    t.string   "experience"
     t.date     "date_from"
     t.date     "date_to"
     t.datetime "created_at"
@@ -71,6 +71,10 @@ ActiveRecord::Schema.define(version: 20141101211558) do
     t.text     "description"
     t.integer  "birth_year"
     t.integer  "study_field_id"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

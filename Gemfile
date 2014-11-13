@@ -16,6 +16,8 @@ gem 'therubyracer', :platform=>:ruby
 gem 'thin'
 gem 'rails_12factor', group: :production
 gem 'paperclip'
+gem 'jquery-rails'
+gem 'jquery-turbolinks'
 
 group :development do
   gem 'better_errors'

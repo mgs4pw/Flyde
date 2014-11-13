@@ -17,3 +17,12 @@
  *= require adminre/stylesheet/layout
  *= require adminre/library/bootstrap/css/bootstrap
   */
+  
+ .dream-logo-figure {
+ 	width: 200px;
+ 	background-size: 200px 32px;
+ }
+
+ #header.navbar .navbar-header {
+ 	background-color: transparent;
+ }

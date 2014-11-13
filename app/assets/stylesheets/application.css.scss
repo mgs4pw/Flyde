@@ -12,4 +12,19 @@
  *
  *= require_tree .
  *= require_self
+ *= require adminre/plugins/selectize/css/selectize.min
+ *= require adminre/plugins/jqueryui/css/jquery-ui.min
+ *= require adminre/plugins/jqueryui/css/jquery-ui-timepicker.min
+ *= require adminre/library/bootstrap/css/bootstrap.min
+ *= require adminre/stylesheet/layout
+ *= require adminre/stylesheet/uielement
  */
+
+ .dream-logo-figure {
+ 	width: 200px;
+ 	background-size: 200px 32px;
+ }
+
+ #header.navbar .navbar-header {
+ 	background-color: transparent;
+ }

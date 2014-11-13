@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get '/student_dashboard', to: 'students#dashboard', as: 'student_dashboard'
   post '/student/update_profile', to: 'students#update_profile', as: 'update_student_profile'
-  post '/student/create_experience', to: 'students#create_experience', as:'create_student_experience'
-  
+  post '/student/experience', to: 'students#create_experience', as:'create_student_experience'
+  delete '/student/:id/experience', to: 'students#destroy_experience', as: 'student_experience'
+
 end

@@ -24,10 +24,21 @@ class StudentsController < ApplicationController
   def create_experience
     @experience = current_user.experiences.build permit_experience_params
 
+    binding.pry
     if @experience.save
       redirect_to student_dashboard_path, :notice => "Experience is successfully saved."
     else
       redirect_to student_dashboard_path, :alert => "Filed to save experience."
+    end
+  end
+
+  def destroy_experience
+     @exp = current_user.experiences.find params[:id]
+
+     if @exp.destroy
+      redirect_to student_dashboard_path, notice: 'Experience was successfully deleted.'
+    else
+      redirect_to student_dashboard_path, notice: 'Failed to delete experience.'
     end
   end
 
@@ -48,6 +59,7 @@ class StudentsController < ApplicationController
   end
 
   def permit_experience_params
-    
+    binding.pry
+    params.require(:experience).permit :experience, :date_from, :date_to
   end
 end
