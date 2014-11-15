@@ -23,6 +23,7 @@ class SessionsController < Devise::SessionsController
   end
 
   def destroy
+    binding.pry
     sign_out
 
     redirect_to root_path

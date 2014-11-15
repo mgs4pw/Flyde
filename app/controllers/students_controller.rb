@@ -8,6 +8,9 @@ class StudentsController < ApplicationController
 
     @experience = Experience.new
     @experiences = @student.experiences
+
+    @skill = Skill.new
+    @skills = @student.skills
   end
 
   def update_profile
@@ -27,17 +30,37 @@ class StudentsController < ApplicationController
     if @experience.save
       redirect_to student_dashboard_path, :notice => "Experience is successfully saved."
     else
-      redirect_to student_dashboard_path, :alert => "Filed to save experience."
+      redirect_to student_dashboard_path, :alert => "Failed to save experience."
     end
   end
 
   def destroy_experience
      @exp = current_user.experiences.find params[:id]
 
-     if @exp.destroy
-      redirect_to student_dashboard_path, notice: 'Experience was successfully deleted.'
+    if @exp.destroy
+      redirect_to student_dashboard_path, notice: "Experience was successfully deleted."
     else
-      redirect_to student_dashboard_path, notice: 'Failed to delete experience.'
+      redirect_to student_dashboard_path, alert: "Failed to delete experience."
+    end
+  end
+
+  def create_skill
+    @skill = current_user.skills.build permit_skill_params
+
+    if @skill.save
+      redirect_to student_dashboard_path, :notice => "Skill is successfully saved."
+    else
+      redirect_to student_dashboard_path, :alert => "Failed to save skill."
+    end
+  end
+
+  def destroy_skill
+     @sk = current_user.skills.find params[:id]
+
+    if @sk.destroy
+      redirect_to student_dashboard_path, notice: "Skill was successfully deleted."
+    else
+      redirect_to student_dashboard_path, alert: "Failed to delete skill."
     end
   end
 
@@ -59,5 +82,9 @@ class StudentsController < ApplicationController
 
   def permit_experience_params
     params.require(:experience).permit :experience, :date_from, :date_to
+  end
+
+  def permit_skill_params
+    params.require(:skill).permit :skill
   end
 end

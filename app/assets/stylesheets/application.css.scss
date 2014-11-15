@@ -15,9 +15,10 @@
  *= require adminre/plugins/selectize/css/selectize.min
  *= require adminre/plugins/jqueryui/css/jquery-ui.min
  *= require adminre/plugins/jqueryui/css/jquery-ui-timepicker.min
- *= require adminre/library/bootstrap/css/bootstrap.min
- *= require adminre/stylesheet/layout
+ 
  *= require adminre/stylesheet/uielement
+ *= require adminre/stylesheet/layout
+ *= require adminre/library/bootstrap/css/bootstrap.min
  */
 
  .dream-logo-figure {
@@ -27,4 +28,15 @@
 
  #header.navbar .navbar-header {
  	background-color: transparent;
+ }
+
+ .skill-note {
+ 	padding: 10px !important;
+ 	margin: 0px !important;
+ }
+
+ .skill-note .close {
+ 	padding: 0px;
+	margin: 0px;
+	font-size: 15px;
  }

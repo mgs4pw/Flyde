@@ -17,11 +17,12 @@ class User < ActiveRecord::Base
   has_one :study_fiels
 
   has_many :experiences
+  has_many :skills
 
   has_attached_file :photo,
-                      :styles => {
-                        :medium => "200x200>",
-                        :thumb => "20x20>"
-                      }
+                    :styles => {
+                      :medium => "200x200>",
+                      :thumb => "20x20>"
+                    }
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
 end

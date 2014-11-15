@@ -103,9 +103,9 @@ $(function () {
             success: function(e) {
                 console.log(e);
                 if (e.user_type == "company") {
-                    location.href="/company_dashboard";
+                    location.href="/company";
                 } else if (e.user_type == "student") {
-                    location.href="/student_dashboard";
+                    location.href="/student";
                 } else {
                     location.href="/";
                 }

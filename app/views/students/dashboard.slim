@@ -12,7 +12,7 @@ header#header.navbar.navbar-fixed-top
     ul.nav.navbar-nav.navbar-right
       /! Profile dropdown
       li.dropdown.profile
-        a.dropdown-toggle data-toggle="dropdown" href="javascript:void(0);" 
+        = link_to destroy_user_session_path, class: "dropdown-toggle", method: :delete
           span.meta
             span.avatar
               = image_tag @student.photo.url, class: 'img-circle'
@@ -129,22 +129,22 @@ section#main role="main"
                       tr
                         th width="50%" Experience
                         th width="30%" Date
-                        th width="20%"
+                        th width="20%" Action
                     tbody
                       - @experiences.each do |exp|
                         tr
                           td = exp.experience
                           td = exp.date_from.to_s + " ~ " + exp.date_to.to_s
                           td.text-center
-                            = link_to student_experience_path(exp), class: 'btn btn-danger', method: :delete, 'data-confirm' => 'Are you sure?' do
-                              span.ico-remove Delete
+                            = link_to destroy_student_experience_path(exp), class: 'btn btn-danger', method: :delete, 'data-confirm' => 'Are you sure?' do
+                              span.ico-remove &nbsp;Delete
                 br
                 = form_for @experience, url: create_student_experience_path, method: :post do |e|
                   .form-group
                     .row
                       .col-sm-4
                         = e.label :experience, 'Experience', class: 'control-label'
-                        = e.text_field :experience, class: "form-control"
+                        = e.text_field :experience, class: "form-control", placeholder: "Type experience here"
                       .col-sm-4
                         = e.label :date_from, 'From', class: 'control-label'
                         /!= e.date_select :date_from, {start_year: 1980}, class: 'form-control'
@@ -158,29 +158,25 @@ section#main role="main"
           /! tab-pane: Skills
           #profile.tab-pane.active
             /! form profile
-            form.panel.form-horizontal.form-bordered
-              .panel-body.pt0.pb0
-                .form-group.header.bgcolor-default
-                  .col-md-6.text-left
-                    h4.semibold.text-primary Skill Sets
-                  .col-md-6.text-right
-                    .col-sm-9.text-right
-                      input.form-control name="name" type="text" value="Ruby on Rails"
-                    .col-sm-3.text-right
-                      button.btn.btn-success type="submit"  Add
+            .form.panel.panel-default
+              .panel-heading.pt0.pb0
+                h4.semibold.text-primary Skills
+              .panel-body
+                br
+                = form_for @skill, url: create_student_skill_path, method: :post do |s|
+                  .row
+                    .text-right.col-sm-6.col-sm-offset-4
+                      = s.text_field :skill, class: 'form-control', placeholder: "Type skill here"
+                    .text-right.col-sm-2
+                      = s.submit 'Add', class: "btn btn-success", style: "width:100%;"
                 br
                 .row
-                  .col-md-4
-                    /! START panel
-                    .panel.panel-teal
-                      /! panel heading/header
-                      .panel-heading
-                        h3.panel-title Teal
-                        /! panel toolbar
-                        .panel-toolbar.text-right
-                          /! option
-                          .option
-                            button.btn data-parent=".col-md-4" data-toggle="panelremove" 
-                              i.remove
+                  - @skills.each do |sk|
+                    .col-md-3
+                      .alert.alert-info.skill-note
+                        = link_to destroy_student_skill_path(sk), class: "btn close", method: :delete
+                          | x
+                        strong
+                          =sk.skill
               
 
