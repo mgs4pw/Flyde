@@ -10,29 +10,29 @@
   #navbar-collapse.collapse.navbar-collapse.navbar-collapse-alt
     ul.nav.navbar-nav.navbar-right
       li.dropdown
-        = link_to '', class: 'dropdown-toggle', data: {toggle: 'dropdown'} do
+        = link_to '#automate-process', class: 'dropdown-toggle', data: {toggle: 'dropdown'} do
           span.meta
-            span.text How It Works
+            span.text.text-primary How It Works
       li.dropdown
         = link_to '', class: 'dropdown-toggle', data: {toggle: 'dropdown'} do
           span.meta
-            span.text Program
+            span.text.text-primary Program
       li.dropdown
         = link_to '', class: 'dropdown-toggle', data: {toggle: 'dropdown'} do
           span.meta
-            span.text Our Team
+            span.text.text-primary Our Team
       li.dropdown
         = link_to '', class: 'dropdown-toggle', data: {toggle: 'dropdown'} do
           span.meta
-            span.text Contact
+            span.text.text-primary Contact
       li.dropdown
         = link_to '', class: 'dropdown-toggle', data: {toggle: 'modal', target: '#signup_main'} do
           span.meta
-            span.text Sign Up
+            span.text.text-primary Sign Up
       li.dropdown
         = link_to '', class: 'dropdown-toggle', data: { toggle: "modal", target: '#signin_form' } do
           span.meta
-            span.text Log In
+            span.text.text-primary Log In
 - content_for :modals
   = render 'devise/sessions/signin'
   = render 'devise/registrations/company'

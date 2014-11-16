@@ -1,0 +1,61 @@
+/! START Template Header
+header#header.navbar.navbar-fixed-top
+  /! START navbar header
+  .navbar-header
+    /! Brand
+    a.navbar-brand href="javascript:void(0);" 
+      span.logo-figure.dream-logo-figure
+    /! / Brand
+  /! START Toolbar
+  .navbar-toolbar.clearfix
+    /! START Right nav
+    ul.nav.navbar-nav.navbar-right
+      /! Profile dropdown
+      li.dropdown.profile
+        = link_to destroy_user_session_path, class: "dropdown-toggle", method: :delete
+          span.meta
+            span.avatar
+              = image_tag @company.photo.url, class: 'img-circle'
+            span.text.hidden-xs.hidden-sm.pl5 Sign Out
+/! / END Template Header
+
+/! START Template Main
+section#main role="main" 
+  /! START Template Container
+  .container
+
+    /! START row
+    .row
+      /! Left / Top Side
+      .col-sm-3
+        /! figure with progress
+        ul.list-table
+          li.text-center
+            = image_tag @company.photo.url, class: '', width: "100%"
+
+        /! tab menu
+        ul.list-group.list-group-tabs
+          li.list-group-item.active
+            a data-toggle="tab" href="#profile" 
+              i.ico-user2.mr5
+              | Profile
+          li.list-group-item
+            a data-toggle="tab" href="#account" 
+              i.ico-archive2.mr5
+              | Account
+          li.list-group-item
+            a data-toggle="tab" href="#security" 
+              i.ico-shield3.mr5
+              | Security &amp; privacy
+          li.list-group-item
+            a data-toggle="tab" href="#password" 
+              i.ico-key2.mr5
+              | Password
+        /! tab menu
+       
+      /! / Left / Top Side
+      /! Left / Bottom Side
+      .col-sm-9
+        = render 'shared/messages'
+        /! START Tab-content
+        .tab-content
