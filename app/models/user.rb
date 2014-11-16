@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
 
   has_many :experiences
   has_many :skills
+  has_many :positions
 
   has_attached_file :photo,
                     :styles => {

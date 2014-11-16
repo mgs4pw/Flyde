@@ -1,0 +1,72 @@
+== render '/layouts/company_top'
+/! START Template Main
+section#main role="main" 
+  /! START Template Container
+  .container
+
+    /! START row
+    .row
+      == render '/layouts/company_left'
+       
+      /! / Left / Top Side
+      /! Left / Bottom Side
+      .col-sm-9
+        = render 'shared/messages'
+        /! START Tab-content
+        .tab-content
+          .row
+            .col-md-12
+              /! START panel
+              = form_for @company, url: company_profile_update_path, method: :post, html: { multipart: true, class: 'panel panel-default form-horizontal form-bordered' } do |f|
+                /! panel heading/header
+                .panel-heading.pt0.pb0
+                  h4.semibold.text-primary Company Profile
+                /! / panel heading/header
+                /! panel body
+                .panel-body
+                  .form-group
+                    = f.label :name, 'Your Full Name', class: 'col-sm-3 control-label'
+                    .col-sm-9
+                      = f.text_field :name, class: 'form-control', placeholder: 'Your name'
+                  .form-group
+                    = f.label :email, 'Enter your email', class: 'col-sm-3 control-label'
+                    .col-sm-9
+                      = f.text_field :email, class: 'form-control', placeholder: 'Email address'
+                  .form-group
+                    = f.label :password, class: 'col-sm-3 control-label'
+                    .col-sm-9
+                      = f.text_field :password, class: 'form-control', type: 'password'
+                  .form-group
+                    = f.label :password_confirmation, class: 'col-sm-3 control-label'
+                    .col-sm-9
+                      = f.text_field :password_confirmation, class: 'form-control', type: 'password'
+                  .form-group
+                    = f.label :company_name, 'Your Company Name', class: 'col-sm-3 control-label'
+                    .col-sm-9
+                      = f.text_field :company_name, class: 'form-control', placeholder: 'Company name'
+                  .form-group
+                    = f.label :website, 'Comapny Website URL', class: 'col-sm-3 control-label'
+                    .col-sm-9
+                      = f.text_field :website, class: 'form-control', placeholder: 'http://'
+                  .form-group
+                    = f.label :position, 'Your position', class: 'col-sm-3 control-label'
+                    .col-sm-9
+                      = f.text_field :position, class: 'form-control', placeholder: 'Your position in company'
+                  .form-group
+                    = f.label :phone_number, 'Your Phone Number', class: 'col-sm-3 control-label'
+                    .col-sm-9
+                      = f.text_field :phone_number, class: 'form-control', placeholder: '+1-555-555-5555'
+                  .form-group
+                    = f.label :description, 'About Your Company', class: 'col-sm-3 control-label'
+                    .col-sm-9
+                      = f.text_area :description, class: 'form-control', rows: '5'
+                  .form-group
+                    = f.label :photo, 'About Your Company', class: 'col-sm-3 control-label'
+                    .col-sm-9
+                      = f.file_field :photo, class: 'form-control'
+                .panel-footer.text-right
+                  = f.button 'Save Changes', class: 'btn btn-success'
+                  
+                /! / panel body
+              /! END panel
+

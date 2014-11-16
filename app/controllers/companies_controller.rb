@@ -5,17 +5,27 @@ class CompaniesController < ApplicationController
 
   def dashboard
     @company = current_user
+
+    @positions = @company.positions
+    @position = Position.new
+  end
+
+  def profile
+    @company = current_user
   end
 
   def update_profile
 
     @company = current_user
     if @company.update_attributes permit_params
-      redirect_to company_dashboard_path, :notice => "Profile is successfully updated."
+      redirect_to company_profile_update_path, :notice => "Profile is successfully updated."
     else
-      redirect_to company_dashboard_path, :alert => "Failed to update profile."
+      redirect_to company_profile_update_path, :alert => "Failed to update profile."
     end
 
+  end
+
+  def position
   end
 
   def permit_params
@@ -28,8 +38,9 @@ class CompaniesController < ApplicationController
       params[:user].delete :photo
     end
 
-    params.require(:user).permit :email, :password, :name, :phone_number, :birth_year, :photo,
-                                 :academic_status, :study_field_id, :school, :major
+    params.require(:user).permit :email, :password, :name, :company_name, :phone_number, :position, 
+                                  :website, :description, :photo
+                                 
   end
 
   def permit_experience_params

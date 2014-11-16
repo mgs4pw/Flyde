@@ -1,0 +1,20 @@
+/! START Template Header
+header#header.navbar.navbar-fixed-top
+  /! START navbar header
+  .navbar-header
+    /! Brand
+    a.navbar-brand href="javascript:void(0);" 
+      span.logo-figure.dream-logo-figure
+    /! / Brand
+  /! START Toolbar
+  .navbar-toolbar.clearfix
+    /! START Right nav
+    ul.nav.navbar-nav.navbar-right
+      /! Profile dropdown
+      li.dropdown.profile
+        = link_to destroy_user_session_path, class: "dropdown-toggle", method: :delete
+          span.meta
+            span.avatar
+              = image_tag @company.photo.url, class: 'img-circle'
+            span.text.hidden-xs.hidden-sm.pl5 Sign Out
+/! / END Template Header

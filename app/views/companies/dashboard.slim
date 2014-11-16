@@ -1,24 +1,4 @@
-/! START Template Header
-header#header.navbar.navbar-fixed-top
-  /! START navbar header
-  .navbar-header
-    /! Brand
-    a.navbar-brand href="javascript:void(0);" 
-      span.logo-figure.dream-logo-figure
-    /! / Brand
-  /! START Toolbar
-  .navbar-toolbar.clearfix
-    /! START Right nav
-    ul.nav.navbar-nav.navbar-right
-      /! Profile dropdown
-      li.dropdown.profile
-        = link_to destroy_user_session_path, class: "dropdown-toggle", method: :delete
-          span.meta
-            span.avatar
-              = image_tag @company.photo.url, class: 'img-circle'
-            span.text.hidden-xs.hidden-sm.pl5 Sign Out
-/! / END Template Header
-
+== render '/layouts/company_top'
 /! START Template Main
 section#main role="main" 
   /! START Template Container
@@ -26,32 +6,7 @@ section#main role="main"
 
     /! START row
     .row
-      /! Left / Top Side
-      .col-sm-3
-        /! figure with progress
-        ul.list-table
-          li.text-center
-            = image_tag @company.photo.url, class: '', width: "100%"
-
-        /! tab menu
-        ul.list-group.list-group-tabs
-          li.list-group-item.active
-            a data-toggle="tab" href="#profile" 
-              i.ico-user2.mr5
-              | Profile
-          li.list-group-item
-            a data-toggle="tab" href="#account" 
-              i.ico-archive2.mr5
-              | Account
-          li.list-group-item
-            a data-toggle="tab" href="#security" 
-              i.ico-shield3.mr5
-              | Security &amp; privacy
-          li.list-group-item
-            a data-toggle="tab" href="#password" 
-              i.ico-key2.mr5
-              | Password
-        /! tab menu
+      == render '/layouts/company_left'
        
       /! / Left / Top Side
       /! Left / Bottom Side
@@ -59,3 +14,38 @@ section#main role="main"
         = render 'shared/messages'
         /! START Tab-content
         .tab-content
+          .row
+            .col-md-12
+              /! START panel
+              .panel.panel-default.form-horizontal.form-bordered
+                /! panel heading/header
+                .panel-heading.pt0.pb0
+                  h4.semibold.text-primary Hiring Questionuire
+                /! / panel heading/header
+                /! panel body
+                .panel-body
+                  - @positions.each do |p|
+                    .col-md-12
+                      .panel.panel-info
+                        /! panel heading/header
+                        .panel-heading
+                          h3.panel-title.text-center
+                            = p.name
+                        /! panel body with collapse capable
+                        .panel-collapse.pull.out
+                          .panel-body
+                            dl.dl-horizontal
+                              dt Skill 1
+                              dd Importance 1
+                              dt Skill 2
+                              dd Importance 2
+
+                  /! Add new Position Information
+                  .col-md-12
+                    = form_for @position, url: company_position_path, method: :post, html: { class: 'panel panel-default form-horizontal form-bordered' } do |f|
+                      .panel-body
+                        .form-group
+                          .col-md-8.col-md-offset-2
+                            = f.label :name, 'Position', class: 'control-label col-sm-4'
+                            .col-sm-8
+                              = f.text_field :name, class: 'form-control', placeholder: 'Position Title'

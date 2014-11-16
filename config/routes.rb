@@ -16,4 +16,8 @@ Rails.application.routes.draw do
   post '/student/skill', to: 'students#create_skill', as:'create_student_skill'
   delete '/student/:id/skill', to: 'students#destroy_skill', as: 'destroy_student_skill'
 
+  get '/company/profile', to: 'companies#profile', as: 'company_profile'
+  post '/company/profile', to: 'companies#update_profile', as: 'company_profile_update'
+  post '/company/position', to: 'companies#position', as: 'company_position'
+
 end
