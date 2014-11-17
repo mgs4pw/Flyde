@@ -60,6 +60,18 @@ class CompaniesController < ApplicationController
   end
 
   def permit_position_params
+    if params[:position][:skill_1].blank?
+      params[:position].delete :importance_1
+    end
+
+    if params[:position][:skill_2].blank?
+      params[:position].delete :importance_2
+    end
+
+    if params[:position][:skill_3].blank?
+      params[:position].delete :importance_3
+    end
+    
     params.require(:position).permit :name, :skill_1, :importance_1, :skill_2, :importance_2, :skill_3, :importance_3
   end
 end
