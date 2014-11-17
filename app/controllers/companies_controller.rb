@@ -36,6 +36,16 @@ class CompaniesController < ApplicationController
 
   end
 
+  def destroy_position
+    pos = current_user.positions.find params[:id]
+
+    if pos.destroy
+      redirect_to company_dashboard_path, notice: "Position was successfully deleted."
+    else
+      redirect_to company_dashboard_path, alert: "Failed to delete position."
+    end
+  end
+
   def permit_params
     if params[:user][:password].blank?
       params[:user].delete :password

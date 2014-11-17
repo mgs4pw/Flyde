@@ -35,7 +35,7 @@ class StudentsController < ApplicationController
   end
 
   def destroy_experience
-     @exp = current_user.experiences.find params[:id]
+    @exp = current_user.experiences.find params[:id]
 
     if @exp.destroy
       redirect_to student_dashboard_path, notice: "Experience was successfully deleted."

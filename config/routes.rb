@@ -19,5 +19,6 @@ Rails.application.routes.draw do
   get '/company/profile', to: 'companies#profile', as: 'company_profile'
   post '/company/profile', to: 'companies#update_profile', as: 'company_profile_update'
   post '/company/position', to: 'companies#position', as: 'company_position'
+  delete '/company/:id/position', to: 'companies#destroy_position', as: 'company_position_destroy'
 
 end
