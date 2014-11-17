@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
   def get_basedata
     @countries = Country.includes(:provinces).all
     @study_fields = StudyField.all
+
+    @skill_lists = SkillList.all
   end
 
 end

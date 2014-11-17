@@ -35,10 +35,12 @@ section#main role="main"
                         .panel-collapse.pull.out
                           .panel-body
                             dl.dl-horizontal
-                              dt Skill 1
-                              dd Importance 1
-                              dt Skill 2
-                              dd Importance 2
+                              dt = p.skill_1
+                              dd = p.importance_1
+                              dt = p.skill_2
+                              dd = p.importance_2
+                              dt = p.skill_3
+                              dd = p.importance_3
 
                   /! Add new Position Information
                   .col-md-12
@@ -49,3 +51,26 @@ section#main role="main"
                             = f.label :name, 'Position', class: 'control-label col-sm-4'
                             .col-sm-8
                               = f.text_field :name, class: 'form-control', placeholder: 'Position Title'
+                        .form-group
+                          .col-md-6
+                            = f.label :skill_1, 'Required skill1', class: 'control-label'
+                            = f.select :skill_1, @skill_lists.collect {|c| [c.name, c.name]}, {}, class: 'form-control'
+                          .col-md-6
+                            = f.label :importance_1, 'Importance', class: 'control-label'
+                            = f.select :importance_1, [["Importance 1", 1], ["Importance 2", 2], ["Importance 3", 3], ["Importance 4", 4], ["Importance 5", 5]], {}, class: 'form-control'
+                        .form-group
+                          .col-md-6
+                            = f.label :skill_2, 'Required skill1', class: 'control-label'
+                            = f.select :skill_2, @skill_lists.collect {|c| [c.name, c.name]}, {}, class: 'form-control'
+                          .col-md-6
+                            = f.label :importance_2, 'Importance', class: 'control-label'
+                            = f.select :importance_2, [["Importance 1", 1], ["Importance 2", 2], ["Importance 3", 3], ["Importance 4", 4], ["Importance 5", 5]], {}, class: 'form-control'
+                        .form-group
+                          .col-md-6
+                            = f.label :skill_3, 'Required skill1', class: 'control-label'
+                            = f.select :skill_3, @skill_lists.collect {|c| [c.name, c.name]}, {}, class: 'form-control'
+                          .col-md-6
+                            = f.label :importance_3, 'Importance', class: 'control-label'
+                            = f.select :importance_3, [["Importance 1", 1], ["Importance 2", 2], ["Importance 3", 3], ["Importance 4", 4], ["Importance 5", 5]], {}, class: 'form-control'
+                        .col-md-6.col-md-offset-3.text-center
+                            = f.submit 'Add Position', class: 'btn btn-success'

@@ -26,6 +26,14 @@ class CompaniesController < ApplicationController
   end
 
   def position
+    @position = current_user.positions.build permit_position_params
+
+    if @position.save
+      redirect_to company_dashboard_path, :notice => "Position is successfully saved."
+    else
+      redirect_to company_dashboard_path, :alert => "Failed to save experience."
+    end
+
   end
 
   def permit_params
@@ -49,5 +57,9 @@ class CompaniesController < ApplicationController
 
   def permit_skill_params
     params.require(:skill).permit :skill
+  end
+
+  def permit_position_params
+    params.require(:position).permit :name, :skill_1, :importance_1, :skill_2, :importance_2, :skill_3, :importance_3
   end
 end
