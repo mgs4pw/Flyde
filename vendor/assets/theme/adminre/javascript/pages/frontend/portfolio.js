@@ -6,7 +6,7 @@
 $(function () {
     // Lightbox
     // ================================
-    $("#shuffle-grid").magnificPopup({
+    $("#meet-folks").magnificPopup({
         delegate: ".magnific",
         type: "image",
         gallery: {
@@ -37,7 +37,7 @@ $(function () {
 
     // Shuffle
     // ================================
-    var $grid   = $("#shuffle-grid"),
+    var $grid   = $("#meet-folks"),
         $filter = $("#shuffle-filter"),
         $sort   = $("#shuffle-sort"),
         $sizer  = $grid.find("shuffle-sizer");

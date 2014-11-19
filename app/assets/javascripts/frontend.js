@@ -23,4 +23,9 @@
 //= require adminre/plugins/layerslider/js/transitions.min
 //= require adminre/plugins/layerslider/js/layerslider.min
 
+//= require adminre/plugins/magnific/js/jquery.magnific-popup.min
+//= require adminre/plugins/shuffle/js/jquery.shuffle.min
+//= require adminre/plugins/owl/js/owl.carousel.min
+//= require adminre/javascript/pages/frontend/portfolio
+
 //= require home
