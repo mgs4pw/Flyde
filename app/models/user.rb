@@ -19,6 +19,9 @@ class User < ActiveRecord::Base
   has_many :experiences
   has_many :skills
   has_many :positions
+  has_many :student_tests
+
+  has_many :matched_students, class_name: 'MatchedStudent', foreign_key: :company_id
 
   has_attached_file :photo,
                     :styles => {
