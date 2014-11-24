@@ -43,11 +43,11 @@ ActiveRecord::Schema.define(version: 20141123172856) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "skill_1"
+    t.integer  "skill_1"
     t.integer  "importance_1"
-    t.string   "skill_2"
+    t.integer  "skill_2"
     t.integer  "importance_2"
-    t.string   "skill_3"
+    t.integer  "skill_3"
     t.integer  "importance_3"
   end
 
@@ -68,8 +68,8 @@ ActiveRecord::Schema.define(version: 20141123172856) do
   end
 
   create_table "student_tests", force: true do |t|
-    t.integer  "users_id"
-    t.integer  "skill_lists_id"
+    t.integer  "user_id"
+    t.integer  "skill_list_id"
     t.float    "result"
     t.datetime "created_at"
     t.datetime "updated_at"

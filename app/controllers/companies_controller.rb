@@ -14,10 +14,6 @@ class CompaniesController < ApplicationController
     @company = current_user
   end
 
-  def candidate
-    @positions = @company.positions
-  end
-
   def update_profile
 
     @company = current_user

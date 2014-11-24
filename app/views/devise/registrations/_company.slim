@@ -32,7 +32,7 @@
               .row
                 .col-sm-6
                   = f.label :position, 'Your Position', class: 'control-label'
-                  = f.text_field :position, class: "form-control", placeholder: "you@example.com"
+                  = f.text_field :position, class: "form-control", placeholder: "Position in the company"
                 .col-sm-6
                   = f.label :country_id, 'Country (Language)', class: 'control-label'
                   = f.select :country_id, @countries.collect {|c| [c.name, c.id]}, {}, class: 'form-control'

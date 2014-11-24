@@ -258,3 +258,29 @@ StudyField.delete_all
 study_field.each do |name|
   StudyField.create( name: name )
 end
+
+skill_list = [
+  "C",
+  "C#",
+  "C++",
+  "Java",
+  "JavaScript",
+  "Lua",
+  "Objective-C",
+  "Pascal",
+  "Perl",
+  "PHP",
+  "Python",
+  "Ruby",
+  "Scala",
+  "SQL",
+  "VB.NET",
+  "Microsoft Word",
+  "Microsoft Excel",
+  "Microsoft Outlook"
+]
+
+SkillList.delete_all
+skill_list.each do |skill|
+  SkillList.create( name: skill )
+end

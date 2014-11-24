@@ -20,6 +20,6 @@ Rails.application.routes.draw do
   post '/company/profile', to: 'companies#update_profile', as: 'company_profile_update'
   post '/company/position', to: 'companies#position', as: 'company_position'
   delete '/company/:id/position', to: 'companies#destroy_position', as: 'company_position_destroy'
-  get '/company/candidate', to: 'companies#candidate', as: 'company_candidate'
+  get '/company/candidate', to: 'candidates#new', as: 'company_candidate'
 
 end
