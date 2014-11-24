@@ -5,4 +5,6 @@ class MatchedStudent < ActiveRecord::Base
 
   belongs_to :position
 
+  default_scope -> { order(matching_score: :desc) }
+
 end

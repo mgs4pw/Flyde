@@ -1,0 +1,66 @@
+== render '/layouts/company_top'
+/! START Template Main
+section#main role="main" 
+  /! START Template Container
+  .container
+
+    /! START row
+    .row
+      == render '/layouts/company_left'
+       
+      /! / Left / Top Side
+      /! Left / Bottom Side
+      .col-sm-9
+        = render 'shared/messages'
+        /! START Tab-content
+        .tab-content
+          .row
+            .col-md-12
+              - unless @positions.empty?
+                - @positions.each do |pos|
+                  .panel.panel-default.form-horizontal.form-bordered
+                    /! panel heading/header
+                    .panel-heading.pt0.pb0
+                      h4.semibold.text-primary = pos.name
+
+                    .panel-body
+                      - if pos.matched_students.empty?
+                        h4.semibold.text-danger.text-center There is no matched candidate in this position.      
+                      - else
+                        - pos.matched_students.each_with_index do |st, idx|
+                          - if idx == 0
+                            .row
+                              .col-md-4.text-center
+                                = link_to '#' do
+                                  = image_tag st.student.photo.url(:medium), width: "80%", class: "img-thumbnail"
+                              .col-md-4
+                                h4.semibold.ellipsis.mt0
+                                  p.nm = st.student.name
+                                p.text-default
+                                  i.ico-mail2.mr5
+                                  = st.student.email
+                                p.text-default
+                                  i.ico-phone5.mr5
+                                  = st.student.phone_number
+                                p.text-accent Matching Score: #{st.matching_score}%
+                              .col-md-4
+                                p
+                                  = link_to 'Request for Interview', '#', class: "btn btn-success btn-block"
+                                p
+                                  = link_to 'Maybe Next Time', '#', class: "btn btn-success btn-block"
+                            hr
+                          - else
+                            .col-sm-3
+                              /! team #1
+                              .overflow-hidden.text-center
+                                /! avatar
+                                = image_tag st.student.photo.url(:medium), class: "img-rounded", width: "80%", class: "img-thumbnail"
+                                /! / avatar
+                                /! panel body
+                                div
+                                  h4.semibold.ellipsis.text-center.mt0
+                                  p.nm = st.student.name
+                                  small.text-accent Matching Score: #{st.matching_score}%
+
+              - else
+                h4.semibold.text-danger.text-center There is no position in your company!

@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
                     :styles => {
                       :medium => "200x200>",
                       :thumb => "20x20>"
-                    }
+                    },
+                    :default_url => "photo_medium.jpg"
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
 end

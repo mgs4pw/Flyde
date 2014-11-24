@@ -15,7 +15,7 @@ header#header.navbar.navbar-fixed-top
         = link_to destroy_user_session_path, class: "dropdown-toggle", method: :delete
           span.meta
             span.avatar
-              = image_tag @student.photo.url, class: 'img-circle'
+              = image_tag @student.photo.url(:thumb), class: 'img-circle'
             span.text.hidden-xs.hidden-sm.pl5 Sign Out
 /! / END Template Header
 

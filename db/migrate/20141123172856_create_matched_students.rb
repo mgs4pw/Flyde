@@ -6,7 +6,7 @@ class CreateMatchedStudents < ActiveRecord::Migration
       t.integer :position_id
       t.integer :matching_score
       t.integer :display_order
-      t.integer :interview_sent
+      t.boolean :interview_sent
     end
   end
 end

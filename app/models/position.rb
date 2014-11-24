@@ -6,6 +6,8 @@ class Position < ActiveRecord::Base
   belongs_to :skill_2, class_name: 'SkillList', foreign_key: :skill_2
   belongs_to :skill_3, class_name: 'SkillList', foreign_key: :skill_3
 
+  has_many :matched_students
+
   validates_presence_of :name
 
 end
