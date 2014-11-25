@@ -59,5 +59,18 @@ class CandidatesController < ApplicationController
     @matched_candidates = MatchedStudent.where('company_id = ?', @company.id)
   end
 
+  def get_student
+    candidate = User.includes(:experiences).includes(:skills).find(params.permit(:id)[:id])
 
+    if candidate.nil?
+      render :json => {errors: "Could not retrieve candidate profile."}, status: :unprocessible_entity and return
+    else
+      render :json => {
+        :success => true, 
+        :candidate => candidate.to_json, 
+        :experience => candidate.experiences.to_json,
+        :skill => candidate.skills.to_json
+      }, status: :created and return
+    end
+  end
 end

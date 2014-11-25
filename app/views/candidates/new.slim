@@ -17,7 +17,7 @@ section#main role="main"
           .row
             .col-md-12
               - unless @positions.empty?
-                - @positions.each do |pos|
+                - @positions.each_with_index do |pos, pos_idx|
                   .panel.panel-default.form-horizontal.form-bordered
                     /! panel heading/header
                     .panel-heading.pt0.pb0
@@ -27,11 +27,11 @@ section#main role="main"
                       - if pos.matched_students.empty?
                         h4.semibold.text-danger.text-center There is no matched candidate in this position.      
                       - else
-                        - pos.matched_students.each_with_index do |st, idx|
-                          - if idx == 0
+                        - pos.matched_students.each_with_index do |st, st_idx|
+                          - if st_idx == 0
                             .row
                               .col-md-4.text-center
-                                = link_to '#' do
+                                = link_to '',  id: 'showMatchedStudent', remote: true, data: {toggle: 'modal', id: st.student.id} do
                                   = image_tag st.student.photo.url(:medium), width: "80%", class: "img-thumbnail"
                               .col-md-4
                                 h4.semibold.ellipsis.mt0
@@ -65,4 +65,4 @@ section#main role="main"
               - else
                 h4.semibold.text-danger.text-center There is no position in your company!
 
-== render '/candidates/student_profile'
+== render '/candidates/matched_student'
