@@ -1,4 +1,67 @@
 .modal.fade.in#matched_student
   .modal-dialog
     .modal-content
-      
+      .modal-header.text-center
+        button.close data-dismiss="modal" x
+        h3.semibold.modal-title.text-success Student Profile
+      .modal-body
+        .row
+          .col-md-6.text-center
+            img#profile_photo width="100%"
+          .col-md-6
+            br
+            br
+            address
+              strong Name: 
+              span#profile_name Dennis Chan
+            address
+              strong Email: 
+              span#profile_email dennischan8782@gmail.com
+            address
+              strong Phone Number: 
+              span#profile_phonenumber 111-111-1111
+            address
+              strong Birth Year: 
+              span#profile_birthyear 1990
+            address
+              strong Country: 
+              span#profile_country China
+            address
+              strong Province: 
+              span#profile_province Beijing
+        br
+        .row
+          .col-md-6
+            address
+              strong School: 
+              span#profile_school High School
+          .col-md-6
+            address
+              strong Academic Status: 
+              span#profile_academic High School
+        .row
+          .col-md-6
+            address
+              strong Major: 
+              span#profile_major Major
+          .col-md-6
+            address
+              strong Study Field: 
+              span#profile_study Study Field
+
+        .row
+          .col-md-12
+            h4 Experiences
+            table#table1.table.table-bordered.table-hover
+              thead
+                tr
+                  th.col-md-6 Experience
+                  th.col-md-6 Date
+              tbody#experience_body
+
+        .row
+          .col-md-12
+            h4 Skills
+            .row#skill_body
+            
+      .modal-footer

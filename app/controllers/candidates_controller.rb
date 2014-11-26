@@ -65,9 +65,23 @@ class CandidatesController < ApplicationController
     if candidate.nil?
       render :json => {errors: "Could not retrieve candidate profile."}, status: :unprocessible_entity and return
     else
+      candidate_json = {
+        :name           => candidate.name,
+        :email          => candidate.email,
+        :country         => candidate.country_id.nil? ? '' : Country.find(candidate.country_id).name,
+        :province       => candidate.province_id.nil? ? '' : Province.find(candidate.province_id).name,
+        :phone_number   => candidate.phone_number,
+        :academic_status => candidate.academic_status,
+        :study_field    => candidate.study_field_id.nil? ? '' : StudyField.find(candidate.study_field_id).name,
+        :school         => candidate.school,
+        :major          => candidate.major,
+        :birth_year     => candidate.birth_year,
+        :photo          => candidate.photo.url
+      }.to_json
+
       render :json => {
         :success => true, 
-        :candidate => candidate.to_json, 
+        :candidate => candidate_json, 
         :experience => candidate.experiences.to_json,
         :skill => candidate.skills.to_json
       }, status: :created and return
