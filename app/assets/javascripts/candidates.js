@@ -1,13 +1,12 @@
-$(function () {
-	$("#showMatchedStudent").click(function() {
+
+	function showProfile(id) {
 		$.ajax({
             url: '/company/candidate/student',
             method: 'get',
             dataType: 'json',
-            data: { id: $('#showMatchedStudent').data('id')},
-            parameters: { id: $('#showMatchedStudent').data('id')},
+            data: { id: id},
+            parameters: { id: id},
             success: function(e) {
-                console.log(e);
                 profile = JSON.parse(e.candidate);
                 
                 $("#matched_student span#profile_name").text(profile.name);
@@ -38,7 +37,9 @@ $(function () {
                 for (i = 0; i < skills.length; i++) {
                     div = "<div class='col-md-2'>" + skills[i].skill + "</div>";
                     $("#matched_student div#skill_body").append(div);
-                }                
+                }
+
+                $("#matched_student #link").attr("href", "/interview/request." + id)
 
             },
             error: function(e) {
@@ -47,6 +48,4 @@ $(function () {
                 return false;
             }
         });
-		
-	});
-})
+	};

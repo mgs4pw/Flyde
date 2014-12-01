@@ -28,39 +28,18 @@ section#main role="main"
                         h4.semibold.text-danger.text-center There is no matched candidate in this position.      
                       - else
                         - pos.matched_students.each_with_index do |st, st_idx|
-                          - if st_idx == 0
-                            .row
-                              .col-md-4.text-center
-                                = link_to '',  id: 'showMatchedStudent', remote: true, data: {toggle: 'modal', id: st.student.id} do
-                                  = image_tag st.student.photo.url(:medium), width: "80%", class: "img-thumbnail"
-                              .col-md-4
-                                h4.semibold.ellipsis.mt0
-                                  p.nm = st.student.name
-                                p.text-default
-                                  i.ico-mail2.mr5
-                                  = st.student.email
-                                p.text-default
-                                  i.ico-phone5.mr5
-                                  = st.student.phone_number
-                                p.text-accent Matching Score: #{st.matching_score}%
-                              .col-md-4
-                                p
-                                  = link_to 'Request for Interview', '#', class: "btn btn-success btn-block"
-                                p
-                                  = link_to 'Maybe Next Time', '#', class: "btn btn-success btn-block"
-                            hr
-                          - else
-                            .col-sm-3
-                              /! team #1
-                              .overflow-hidden.text-center
-                                /! avatar
-                                = image_tag st.student.photo.url(:medium), class: "img-rounded", width: "80%", class: "img-thumbnail"
-                                /! / avatar
-                                /! panel body
-                                div
-                                  h4.semibold.ellipsis.text-center.mt0
-                                  p.nm = st.student.name
-                                  small.text-accent Matching Score: #{st.matching_score}%
+                          .col-sm-3
+                            /! team #1
+                            .overflow-hidden.text-center
+                              /! avatar
+                              a href="#" remote="true" data-toggle="modal" data-id="#{st.student.id}" onclick="showProfile(#{st.student.id})"
+                                = image_tag st.student.photo.url(:medium), class: "img-rounded", width: "100%", class: "img-thumbnail"
+                              /! / avatar
+                              /! panel body
+                              div
+                                h4.semibold.ellipsis.text-center.mt0
+                                p.nm = st.student.name
+                                small.text-accent Matching Score: #{st.matching_score}%
 
               - else
                 h4.semibold.text-danger.text-center There is no position in your company!

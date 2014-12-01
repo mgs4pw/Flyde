@@ -87,4 +87,8 @@ class CandidatesController < ApplicationController
       }, status: :created and return
     end
   end
+
+  def request_interview
+    redirect_to company_candidate_path 
+  end
 end
