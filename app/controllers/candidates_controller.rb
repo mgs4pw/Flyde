@@ -66,6 +66,7 @@ class CandidatesController < ApplicationController
       render :json => {errors: "Could not retrieve candidate profile."}, status: :unprocessible_entity and return
     else
       candidate_json = {
+        :student_id     => candidate.id,
         :name           => candidate.name,
         :email          => candidate.email,
         :country         => candidate.country_id.nil? ? '' : Country.find(candidate.country_id).name,
@@ -89,6 +90,20 @@ class CandidatesController < ApplicationController
   end
 
   def request_interview
-    redirect_to company_candidate_path 
+    @interview = Interview.new
+    @interview.company_id = current_user.id
+    @interview.student_id = params[:candidate][:student_id]
+    @interview.position_id = params[:candidate][:position_id]
+
+    @interview.save
+
+    redirect_to company_candidate_path
   end
+
+  private
+
+  def permit_request_interview_param
+
+  end
+
 end

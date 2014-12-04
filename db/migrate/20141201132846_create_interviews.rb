@@ -4,7 +4,7 @@ class CreateInterviews < ActiveRecord::Migration
       t.integer :company_id
       t.integer :student_id
       t.integer :position_id
-      t.date :sent_date
+      t.datetime :sent_date
       t.string :status
 
       t.timestamps

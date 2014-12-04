@@ -22,6 +22,8 @@ class User < ActiveRecord::Base
   has_many :student_tests
 
   has_many :matched_students, class_name: 'MatchedStudent', foreign_key: :company_id
+  has_many :company_interviews, class_name: 'Interview', foreign_key: :company_id
+  has_many :student_interviews, class_name: 'Interview', foreign_key: :student_id
 
   has_attached_file :photo,
                     :styles => {

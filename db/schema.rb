@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20141201132846) do
     t.integer  "company_id"
     t.integer  "student_id"
     t.integer  "position_id"
-    t.date     "sent_date"
+    t.datetime "sent_date"
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"

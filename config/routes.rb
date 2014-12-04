@@ -22,6 +22,6 @@ Rails.application.routes.draw do
   delete '/company/:id/position', to: 'companies#destroy_position', as: 'company_position_destroy'
   get '/company/candidate', to: 'candidates#new', as: 'company_candidate'
   get '/company/candidate/student', to: 'candidates#get_student', as: 'candidate_profile'
-  post '/interview/request', to: 'interviews#request', as: 'request_interview'
+  post '/company/candidate/request-interview', to: 'candidates#request_interview', as: 'request_interview'
 
 end

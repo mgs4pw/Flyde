@@ -32,7 +32,7 @@ section#main role="main"
                             /! team #1
                             .overflow-hidden.text-center
                               /! avatar
-                              a href="#" remote="true" data-toggle="modal" data-id="#{st.student.id}" onclick="showProfile(#{st.student.id})"
+                              a href="#" remote="true" data-toggle="modal" data-id="#{st.student.id}" onclick="showProfile(#{pos.id}, #{st.student.id})"
                                 = image_tag st.student.photo.url(:medium), class: "img-rounded", width: "100%", class: "img-thumbnail"
                               /! / avatar
                               /! panel body
