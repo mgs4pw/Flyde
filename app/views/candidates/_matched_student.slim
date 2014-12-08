@@ -65,9 +65,3 @@
             .row#skill_body
             
       .modal-footer
-        .row
-          .col-md-4.col-md-offset-4
-            = form_for :candidate, url: request_interview_path, method: :post do |f|
-              = f.submit 'Request for Interview', class: "btn btn-success btn-block"
-              = f.hidden_field :student_id, id: "student_id"
-              = f.hidden_field :position_id, id: "position_id"

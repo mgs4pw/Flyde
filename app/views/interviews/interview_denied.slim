@@ -1,0 +1,53 @@
+== render '/layouts/company_top'
+/! START Template Main
+section#main role="main" 
+  /! START Template Container
+  .container
+
+    /! START row
+    .row
+      == render '/layouts/company_left'
+       
+      /! / Left / Top Side
+      /! Left / Bottom Side
+      .col-sm-9
+        = render 'shared/messages'
+        /! START Tab-content
+        .tab-content
+          .row
+            .col-md-12
+              /! START panel
+              .panel.panel-default.form-horizontal.form-bordered
+                /! panel heading/header
+                .panel-heading.pt0.pb0
+                  h4.semibold.text-primary Interview Requests Denied
+                /! / panel heading/header
+                /! panel body
+                .panel-body
+                  .table-responsive.panel-collapse.pull.out
+                    table.table.table-bordered.table-hover
+                      thead
+                        tr
+                          th Position
+                          th Student
+                          th Sent Date
+                          th Interview Date
+                          th Action
+                      tbody
+                        - @interviews.each do |i|
+                          tr
+                            td.td-vmiddle = i.position.name
+                            td.td-vmiddle
+                              .media-object
+                                = image_tag i.student.photo.url(:thumb), class: 'img-circle'
+                              span &nbsp;&nbsp; #{i.student.name}
+                            td.td-vmiddle = i.sent_date.strftime("%Y-%m-%d %H:%M:%S")
+                            td.td-vmiddle = i.interview_datetime.strftime("%Y-%m-%d %H:%M:%S")
+                            td.text-center.td-vmiddle
+                              = link_to destroy_interview_path(i), class: 'btn btn-danger btn-xs', title: 'Delete', method: :delete, 'data-confirm' => 'Are you sure?' do
+                                span.ico-remove3
+                              span &nbsp;
+                              = link_to view_interview_path(i), class: 'btn btn-info btn-xs', title: 'View', method: :get do
+                                span.ico-eye
+                            
+                            

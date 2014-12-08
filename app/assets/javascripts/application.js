@@ -33,4 +33,11 @@ $(document).ready(function () {
         selectOtherMonths: true,
         dateFormat: 'yy-mm-dd'
     });
+
+    // datepicker + timepicker
+    $("#interview_interview_datetime").datetimepicker({
+        showOtherMonths: true,
+        selectOtherMonths: true,
+        dateFormat: 'yy-mm-dd'
+    });
 });

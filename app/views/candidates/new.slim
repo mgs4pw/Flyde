@@ -37,11 +37,13 @@ section#main role="main"
                               /! / avatar
                               /! panel body
                               div
-                                h4.semibold.ellipsis.text-center.mt0
-                                p.nm = st.student.name
-                                small.text-accent Matching Score: #{st.matching_score}%
+                                h5.semibold.ellipsis.text-center = st.student.name
+                                p.nm.text-accent Matching Score: #{st.matching_score}%
+                                p.nm Interview Status: #{st.interview_sent}
+                                hr.mtb5
+                                a href="#" onclick="showRequestInterview(#{pos.id}, #{st.student.id})" Request Interview
 
               - else
                 h4.semibold.text-danger.text-center There is no position in your company!
-
+== render '/candidates/interview_request'
 == render '/candidates/matched_student'

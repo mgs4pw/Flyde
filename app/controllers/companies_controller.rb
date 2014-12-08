@@ -46,6 +46,9 @@ class CompaniesController < ApplicationController
     end
   end
 
+  private
+
+  # Pass parameters to controller
   def permit_params
     if params[:user][:password].blank?
       params[:user].delete :password

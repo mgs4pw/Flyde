@@ -1,4 +1,4 @@
-
+    
 	function showProfile(position_id, student_id) {
 		$.ajax({
             url: '/company/candidate/student',
@@ -20,8 +20,6 @@
                 $("#matched_student span#profile_major").text(profile.major);
                 $("#matched_student span#profile_study").text(profile.study);
                 $("#matched_student img#profile_photo").attr('src', profile.photo);
-                $("#matched_student #student_id").val(profile.id);
-                $("#matched_student #position_id").val(position_id);
 
                 $("#matched_student").modal("show");
 
@@ -51,3 +49,11 @@
             }
         });
 	};
+
+    function showRequestInterview(position_id, student_id) {
+        $("#interview_request").modal("show");
+        $("#interview_request #interview_interview_datetime").val("");
+        $("#interview_request #interview_description").val("");
+        $("#interview_request #student_id").val(student_id);
+        $("#interview_request #position_id").val(position_id);
+    }

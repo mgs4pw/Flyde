@@ -3,14 +3,14 @@
   /! figure with progress
   ul.list-table
     li.text-center
-      = image_tag @company.photo.url, class: '', width: "100%"
+      = image_tag current_user.photo.url, class: '', width: "100%"
 
   br
   .section-header.section-header-bordered.mb10
     h5.section-title
       p.font-alt.nm Our Company
   address
-    = link_to @company.website, @company.website
+    = link_to current_user.website, current_user.website
 
   /! tab menu
   ul.list-group.list-group-tabs
@@ -27,15 +27,15 @@
         i.ico-archive2.mr5
         | Edit Profile
     li.list-group-item
-      a data-toggle="tab" href="#security" 
+      = link_to interview_sent_path do
         i.ico-shield3.mr5
         | Interview Requests Sent
     li.list-group-item
-      a data-toggle="tab" href="#password" 
+      = link_to interview_scheduled_path do
         i.ico-key2.mr5
         | Scheduled Interviews
     li.list-group-item
-      a data-toggle="tab" href="#password" 
+      = link_to interview_denied_path do
         i.ico-key2.mr5
         | Interview Request Denied
   /! tab menu

@@ -1,0 +1,22 @@
+.modal.fade.in#interview_request
+  .modal-dialog
+    .modal-content
+      .modal-header.text-center
+        button.close data-dismiss="modal" x
+        h3.semibold.modal-title.text-success Interview Request
+      = form_for :interview, url: request_interview_path, method: :post do |f|
+        .modal-body
+          .row
+            .col-md-12
+              .form-group
+                = f.label :interview_datetime, "Interview Date/Time", class: "control-label"
+                = f.text_field :interview_datetime, class: "form-control", placeholder: "Select date and time"
+              .form-group
+                = f.label :description, "Description", class: "control-label"
+                = f.text_area :description, class: "form-control", placeholder: "", rows: "5"
+        .modal-footer
+          .row
+            .col-md-4.col-md-offset-4
+                = f.submit 'Request for Interview', class: "btn btn-success btn-block"
+                = f.hidden_field :student_id, id: "student_id"
+                = f.hidden_field :position_id, id: "position_id"

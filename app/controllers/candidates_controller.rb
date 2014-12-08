@@ -51,7 +51,23 @@ class CandidatesController < ApplicationController
 
         total_score = score_1 + score_2 + score_3
         if total_score > 0
-          MatchedStudent.create(company_id: @company.id, student_id: st.user_id, position_id: pos.id, matching_score: total_score)
+          interview = MatchedStudent.interview_info(@company.id, st.user_id, pos.id)
+          if interview.nil?
+            MatchedStudent.create(
+              company_id: @company.id, 
+              student_id: st.user_id, 
+              position_id: pos.id, 
+              matching_score: total_score
+            )
+          else
+            MatchedStudent.create(
+              company_id: @company.id, 
+              student_id: st.user_id, 
+              position_id: pos.id, 
+              matching_score: total_score,
+              interview_sent: interview.status
+            )
+          end
         end
       end
     end
@@ -90,12 +106,23 @@ class CandidatesController < ApplicationController
   end
 
   def request_interview
-    @interview = Interview.new
-    @interview.company_id = current_user.id
-    @interview.student_id = params[:candidate][:student_id]
-    @interview.position_id = params[:candidate][:position_id]
+    old_interview = Interview.where(
+      'company_id = ? and student_id = ? and position_id = ?', 
+      current_user.id, 
+      params[:interview][:student_id],
+      params[:interview][:position_id]
+    ).first
+    
+    if old_interview.nil?
+      interview = Interview.new permit_request_interview_param
+      interview.company_id = current_user.id
+      interview.sent_date = Time.now
+      interview.status = Interview::SENT
+      interview.save
 
-    @interview.save
+    else
+      old_interview.update_attributes permit_request_interview_param
+    end
 
     redirect_to company_candidate_path
   end
@@ -103,7 +130,7 @@ class CandidatesController < ApplicationController
   private
 
   def permit_request_interview_param
-
+    params.require(:interview).permit :position_id, :student_id, :interview_datetime, :description
   end
 
 end

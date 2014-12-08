@@ -16,9 +16,9 @@
  *= require adminre/plugins/jqueryui/css/jquery-ui-timepicker.min
  
  *= require adminre/stylesheet/uielement
- *= require adminre/stylesheet/layout
  *= require adminre/library/bootstrap/css/bootstrap.min
-
+ *= require adminre/stylesheet/layout
+ 
  *= require_self
  */
 
@@ -50,4 +50,13 @@
 
 .no-padding {
 	padding: 0px !important;
+}
+
+.mtb5 {
+	margin-top: 5px !important;
+	margin-bottom: 5px !important;
+}
+
+.td-vmiddle {
+	vertical-align: middle !important;
 }

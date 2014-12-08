@@ -55,7 +55,7 @@ class StudentsController < ApplicationController
   end
 
   def destroy_skill
-     @sk = current_user.skills.find params[:id]
+    @sk = current_user.skills.find params[:id]
 
     if @sk.destroy
       redirect_to student_dashboard_path, notice: "Skill was successfully deleted."

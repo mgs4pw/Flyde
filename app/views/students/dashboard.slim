@@ -134,8 +134,8 @@ section#main role="main"
                     tbody
                       - @experiences.each do |exp|
                         tr
-                          td style="vertical-align:middle;" = exp.experience
-                          td style="vertical-align:middle;" = exp.date_from.to_s + " ~ " + exp.date_to.to_s
+                          td.td-vmiddle = exp.experience
+                          td.td-vmiddle = exp.date_from.to_s + " ~ " + exp.date_to.to_s
                           td.text-center
                             = link_to destroy_student_experience_path(exp), class: 'btn btn-danger', method: :delete, 'data-confirm' => 'Are you sure?' do
                               span.ico-remove &nbsp;Delete

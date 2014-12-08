@@ -7,4 +7,13 @@ class MatchedStudent < ActiveRecord::Base
 
   default_scope -> { order(matching_score: :desc) }
 
+  def self.interview_info(company_id, student_id, position_id)
+    Interview.where(
+        'company_id = ? and student_id = ? and position_id = ?',
+        company_id,
+        student_id,
+        position_id
+    ).first
+  end
+
 end

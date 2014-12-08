@@ -24,4 +24,10 @@ Rails.application.routes.draw do
   get '/company/candidate/student', to: 'candidates#get_student', as: 'candidate_profile'
   post '/company/candidate/request-interview', to: 'candidates#request_interview', as: 'request_interview'
 
+  get '/company/interview', to: 'interviews#interview_sent', as: 'interview_sent'
+  get '/company/interview-scheduled', to: 'interviews#interview_scheduled', as: 'interview_scheduled'
+  get '/company/interview-denied', to: 'interviews#interview_denied', as: 'interview_denied'
+  delete '/company/:id/interview', to: 'interviews#destroy', as: 'destroy_interview'
+  get '/company/:id/interview', to: 'interviews#view', as: 'view_interview'
+
 end
