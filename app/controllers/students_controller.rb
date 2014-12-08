@@ -5,6 +5,7 @@ class StudentsController < ApplicationController
 
   def dashboard
     @student = current_user
+    @interviews = @student.student_interviews.sent
 
     @experience = Experience.new
     @experiences = @student.experiences
@@ -61,6 +62,31 @@ class StudentsController < ApplicationController
       redirect_to student_dashboard_path, notice: "Skill was successfully deleted."
     else
       redirect_to student_dashboard_path, alert: "Failed to delete skill."
+    end
+  end
+
+  def company_profile
+    company = User.find(params.permit(:id)[:id])
+
+    if company.nil?
+      render :json => {errors: "Could not retrieve company profile."}, status: :unprocessible_entity and return
+    else
+      company_json = {
+        :company_id     => company.id,
+        :company_name   => company.company_name,
+        :name           => company.name,
+        :email          => company.email,
+        :country        => company.country_id.nil? ? '' : Country.find(company.country_id).name,
+        :position       => company.position,
+        :phone_number   => company.phone_number,
+        :website        => company.website,
+        :photo          => company.photo.url
+      }.to_json
+
+      render :json => {
+        :success => true, 
+        :company => company_json
+      }, status: :created and return
     end
   end
 

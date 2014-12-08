@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post '/student/update_profile', to: 'students#update_profile', as: 'update_student_profile'
   post '/student/experience', to: 'students#create_experience', as:'create_student_experience'
   delete '/student/:id/experience', to: 'students#destroy_experience', as: 'destroy_student_experience'
+  get '/student/company', to: 'students#company_profile', as: 'student_company_profile'
 
   post '/student/skill', to: 'students#create_skill', as:'create_student_skill'
   delete '/student/:id/skill', to: 'students#destroy_skill', as: 'destroy_student_skill'

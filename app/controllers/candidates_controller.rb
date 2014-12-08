@@ -112,12 +112,20 @@ class CandidatesController < ApplicationController
       params[:interview][:student_id],
       params[:interview][:position_id]
     ).first
+
+    matched_student = MatchedStudent.where(
+      'company_id = ? and student_id = ? and position_id = ?', 
+      current_user.id, 
+      params[:interview][:student_id],
+      params[:interview][:position_id]
+    ).first
     
     if old_interview.nil?
       interview = Interview.new permit_request_interview_param
       interview.company_id = current_user.id
       interview.sent_date = Time.now
       interview.status = Interview::SENT
+      interview.matching_score = matched_student.matching_score
       interview.save
 
     else

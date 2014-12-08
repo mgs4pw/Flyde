@@ -33,26 +33,19 @@ section#main role="main"
           li.text-center
             = image_tag @student.photo.url, class: '', width: "100%"
         br
-
+        br
         /! tab menu
-        ul.list-group.list-group-tabs
-          li.list-group-item.active
-            a data-toggle="tab" href="#profile" 
-              i.ico-user2.mr5
-              | Profile
-          li.list-group-item
-            a data-toggle="tab" href="#account" 
-              i.ico-archive2.mr5
-              | Account
-          li.list-group-item
-            a data-toggle="tab" href="#security" 
-              i.ico-shield3.mr5
-              | Security &amp; privacy
-          li.list-group-item
-            a data-toggle="tab" href="#password" 
-              i.ico-key2.mr5
-              | Password
-        /! tab menu
+        h5.text-primary.semibold.mt0 Matched Positions
+        - @interviews.each do |i|
+          h5
+            a href="#" remote="true" data-toggle="modal" onclick="showCompanyProfile(#{i.company_id})" 
+              = i.position.name
+            span.pull-right #{i.matching_score}%
+          .progress.progress-xs.mtb5
+            .progress-bar.progress-bar-warning style=("width: #{i.matching_score}%") 
+              span.sr-only 60% Complete (warning)
+          a href="#" Accept Interview
+          br
        
       /! / Left / Top Side
       /! Left / Bottom Side
@@ -137,8 +130,8 @@ section#main role="main"
                           td.td-vmiddle = exp.experience
                           td.td-vmiddle = exp.date_from.to_s + " ~ " + exp.date_to.to_s
                           td.text-center
-                            = link_to destroy_student_experience_path(exp), class: 'btn btn-danger', method: :delete, 'data-confirm' => 'Are you sure?' do
-                              span.ico-remove &nbsp;Delete
+                            = link_to destroy_student_experience_path(exp), class: 'btn btn-danger btn-xs', method: :delete, 'data-confirm' => 'Are you sure?' do
+                              span.ico-remove3
                 br
                 = form_for @experience, url: create_student_experience_path, method: :post do |e|
                   .form-group
@@ -179,5 +172,4 @@ section#main role="main"
                           | x
                         strong
                           =sk.skill
-              
-
+== render 'layouts/matched_company'              

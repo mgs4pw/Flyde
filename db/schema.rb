@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20141207223804) do
     t.datetime "updated_at"
     t.text     "description"
     t.datetime "interview_datetime"
+    t.integer  "matching_score"
   end
 
   create_table "matched_students", force: true do |t|
