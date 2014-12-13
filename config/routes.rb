@@ -13,9 +13,10 @@ Rails.application.routes.draw do
   post '/student/experience', to: 'students#create_experience', as:'create_student_experience'
   delete '/student/:id/experience', to: 'students#destroy_experience', as: 'destroy_student_experience'
   get '/student/company', to: 'students#company_profile', as: 'student_company_profile'
-
   post '/student/skill', to: 'students#create_skill', as:'create_student_skill'
   delete '/student/:id/skill', to: 'students#destroy_skill', as: 'destroy_student_skill'
+  get '/student/interview/:id/accept', to: 'students#accept_interview', as: 'accept_interview'
+  get '/student/interview/:id/deny', to: 'students#deny_interview', as: 'deny_interview'
 
   get '/company/profile', to: 'companies#profile', as: 'company_profile'
   post '/company/profile', to: 'companies#update_profile', as: 'company_profile_update'

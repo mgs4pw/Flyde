@@ -25,7 +25,7 @@ section#main role="main"
                 /! panel body
                 .panel-body
                   - @positions.each do |p|
-                    .col-md-4.mb10
+                    .col-md-6.mb10
                       .panel.panel-info
                         /! panel heading/header
                         .panel-heading.no-padding
@@ -70,20 +70,20 @@ section#main role="main"
                             = f.select :skill_1, @skill_lists.collect {|c| [c.name, c.id]}, {prompt: 'Select skill'}, class: 'form-control'
                           .col-md-6
                             = f.label :importance_1, 'Importance', class: 'control-label'
-                            = f.select :importance_1, [["Importance 1", 1], ["Importance 2", 2], ["Importance 3", 3], ["Importance 4", 4], ["Importance 5", 5]], {prompt: 'Select importance'}, class: 'form-control'
+                            = f.select :importance_1, [["Importance 1", 1], ["Importance 2", 2], ["Importance 3", 3]], {prompt: 'Select importance'}, class: 'form-control'
                         .form-group
                           .col-md-6
                             = f.label :skill_2, 'Required skill 2', class: 'control-label'
                             = f.select :skill_2, @skill_lists.collect {|c| [c.name, c.id]}, {prompt: 'Select skill'}, class: 'form-control'
                           .col-md-6
                             = f.label :importance_2, 'Importance', class: 'control-label'
-                            = f.select :importance_2, [["Importance 1", 1], ["Importance 2", 2], ["Importance 3", 3], ["Importance 4", 4], ["Importance 5", 5]], {prompt: 'Select importance'}, class: 'form-control'
+                            = f.select :importance_2, [["Importance 1", 1], ["Importance 2", 2], ["Importance 3", 3]], {prompt: 'Select importance'}, class: 'form-control'
                         .form-group
                           .col-md-6
                             = f.label :skill_3, 'Required skill 3', class: 'control-label'
                             = f.select :skill_3, @skill_lists.collect {|c| [c.name, c.id]}, {prompt: 'Select skill'}, class: 'form-control'
                           .col-md-6
                             = f.label :importance_3, 'Importance', class: 'control-label'
-                            = f.select :importance_3, [["Importance 1", 1], ["Importance 2", 2], ["Importance 3", 3], ["Importance 4", 4], ["Importance 5", 5]], {prompt: 'Select importance'}, class: 'form-control'
+                            = f.select :importance_3, [["Importance 1", 1], ["Importance 2", 2], ["Importance 3", 3]], {prompt: 'Select importance'}, class: 'form-control'
                         .col-md-6.col-md-offset-3.text-center
                             = f.submit 'Add Position', class: 'btn btn-success'

@@ -38,13 +38,11 @@ section#main role="main"
         h5.text-primary.semibold.mt0 Matched Positions
         - @interviews.each do |i|
           h5
-            a href="#" remote="true" data-toggle="modal" onclick="showCompanyProfile(#{i.company_id})" 
+            a href="#" remote="true" data-toggle="modal" onclick="showCompanyProfile(#{i.company_id}, #{i.id})" 
               = i.position.name
             span.pull-right #{i.matching_score}%
           .progress.progress-xs.mtb5
             .progress-bar.progress-bar-warning style=("width: #{i.matching_score}%") 
-              span.sr-only 60% Complete (warning)
-          a href="#" Accept Interview
           br
        
       /! / Left / Top Side
@@ -172,4 +170,4 @@ section#main role="main"
                           | x
                         strong
                           =sk.skill
-== render 'layouts/matched_company'              
+== render 'students/matched_company'              

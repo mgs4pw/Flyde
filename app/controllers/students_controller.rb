@@ -66,7 +66,8 @@ class StudentsController < ApplicationController
   end
 
   def company_profile
-    company = User.find(params.permit(:id)[:id])
+    company = User.find(params[:id])
+    interview = Interview.find(params[:interview_id])
 
     if company.nil?
       render :json => {errors: "Could not retrieve company profile."}, status: :unprocessible_entity and return
@@ -80,7 +81,10 @@ class StudentsController < ApplicationController
         :position       => company.position,
         :phone_number   => company.phone_number,
         :website        => company.website,
-        :photo          => company.photo.url
+        :photo          => company.photo.url,
+        :interview_id   => interview.id,
+        :interview_date => interview.interview_datetime.strftime("%Y-%m-%d %I:%M %p"),
+        :interview_desc => interview.description
       }.to_json
 
       render :json => {
@@ -88,6 +92,20 @@ class StudentsController < ApplicationController
         :company => company_json
       }, status: :created and return
     end
+  end
+
+  def accept_interview
+    interview = Interview.find(params[:id])
+    interview.update_attributes :status => Interview::ACCEPTED
+
+    redirect_to student_dashboard_path
+  end
+
+  def deny_interview
+    interview = Interview.find(params[:id])
+    interview.update_attributes :status => Interview::DENIED
+
+    redirect_to student_dashboard_path
   end
 
   private

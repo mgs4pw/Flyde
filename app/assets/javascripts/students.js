@@ -1,11 +1,11 @@
 
-function showCompanyProfile(company_id) {
+function showCompanyProfile(company_id, interview_id) {
 	$.ajax({
         url: '/student/company',
         method: 'get',
         dataType: 'json',
-        data: { id: company_id},
-        parameters: { id: company_id},
+        data: { id: company_id, interview_id: interview_id},
+        parameters: { id: company_id, interview_id: interview_id},
         success: function(e) {
             profile = JSON.parse(e.company);
 
@@ -18,6 +18,13 @@ function showCompanyProfile(company_id) {
             $("#matched_company img#profile_photo").attr('src', profile.photo);
             $("#matched_company img#profile_position").attr('src', profile.position);
             $("#matched_company img#profile_website").attr('src', profile.website);
+            $("#matched_company #interview_id").text(profile.interview_id);
+            $("#matched_company #interview_date").text(profile.interview_date);
+            $("#matched_company #interview_description").text(profile.interview_desc);
+
+            $("#matched_company #accept_btn").attr('href', 'student/interview/' + profile.interview_id + '/accept');
+            $("#matched_company #deny_btn").attr('href', 'student/interview/' + profile.interview_id + '/deny');
+
 
             $("#matched_company").modal("show");
         },

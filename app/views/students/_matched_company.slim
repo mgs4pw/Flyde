@@ -30,4 +30,22 @@
             address
               strong Position: 
               span#profile_position CTO
+        hr
+        .row
+          .col-md-12.text-center
+            h5.text-primary.semibold.mt0 Interview Request
+            .row
+              .col-md-4.text-right
+                strong Interview Date:
+              .col-md-8.text-left
+                #interview_date Dennis Chan
+            .row
+              .col-md-4.text-right.mt5
+                strong Interview Description:
+              .col-md-8.text-left.mt5
+                #interview_description Google
       .modal-footer
+        .row
+          .col-md-4.col-md-offset-4
+            = link_to 'Accept', '#', class: "btn btn-success", id: "accept_btn"
+            = link_to 'Deny', '#', class: "btn btn-success", id: "deny_btn"
