@@ -21,7 +21,10 @@ section#main role="main"
                   .panel.panel-default.form-horizontal.form-bordered
                     /! panel heading/header
                     .panel-heading.pt0.pb0
-                      h4.semibold.text-primary = pos.name
+                      h4.semibold.text-primary 
+                        small.text-primary
+                          i.ico-list
+                        | &nbsp;#{pos.name}
 
                     .panel-body
                       - if pos.matched_students.empty?

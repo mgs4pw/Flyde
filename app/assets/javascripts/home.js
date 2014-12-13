@@ -103,7 +103,7 @@ $(function () {
             success: function(e) {
                 console.log(e);
                 if (e.user_type == "company") {
-                    location.href="/company";
+                    location.href="/company/candidate";
                 } else if (e.user_type == "student") {
                     location.href="/student";
                 } else {

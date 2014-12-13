@@ -20,7 +20,10 @@ section#main role="main"
               = form_for @company, url: company_profile_update_path, method: :post, html: { multipart: true, class: 'panel panel-default form-horizontal form-bordered' } do |f|
                 /! panel heading/header
                 .panel-heading.pt0.pb0
-                  h4.semibold.text-primary Company Profile
+                  h4.semibold.text-primary
+                    small.text-primary
+                      i.ico-list
+                    | &nbsp;Company Profile
                 /! / panel heading/header
                 /! panel body
                 .panel-body

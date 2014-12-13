@@ -36,14 +36,17 @@ section#main role="main"
         br
         /! tab menu
         h5.text-primary.semibold.mt0 Matched Positions
-        - @interviews.each do |i|
-          h5
-            a href="#" remote="true" data-toggle="modal" onclick="showCompanyProfile(#{i.company_id}, #{i.id})" 
-              = i.position.name
-            span.pull-right #{i.matching_score}%
-          .progress.progress-xs.mtb5
-            .progress-bar.progress-bar-warning style=("width: #{i.matching_score}%") 
-          br
+        - if @interviews.count == 0
+          span No available positions
+        - else
+          - @interviews.each do |i|
+            h5
+              a href="#" remote="true" data-toggle="modal" onclick="showCompanyProfile(#{i.company_id}, #{i.id})" 
+                = i.position.name
+              span.pull-right #{i.matching_score}%
+            .progress.progress-xs.mtb5
+              .progress-bar.progress-bar-warning style=("width: #{i.matching_score}%") 
+            br
        
       /! / Left / Top Side
       /! Left / Bottom Side
@@ -57,7 +60,10 @@ section#main role="main"
             = form_for @student, url: update_student_profile_path, method: :post, html: { multipart: true, class: 'panel panel-default' } do |f|
               /!= render partial: 'shared/form_errors', locals: {model: f.object}
               .panel-heading.pt0.pb0
-                h4.semibold.text-primary Personal Information
+                h4.semibold.text-primary 
+                  small.text-primary
+                    i.ico-list
+                  | &nbsp;Personal Information
               .panel-body
                 .form-group
                   .row
@@ -112,7 +118,10 @@ section#main role="main"
             /! form profile
             .form.panel.panel-default
               .panel-heading.pt0.pb0
-                h4.semibold.text-primary Experiences
+                h4.semibold.text-primary 
+                  small.text-primary
+                    i.ico-list
+                  | &nbsp;Experiences
               .panel-body
                 br
                 .table-responsive.panel-collapse.pull.out
@@ -152,7 +161,10 @@ section#main role="main"
             /! form profile
             .form.panel.panel-default
               .panel-heading.pt0.pb0
-                h4.semibold.text-primary Skills
+                h4.semibold.text-primary 
+                  small.text-primary
+                    i.ico-list
+                  | &nbsp;Skills
               .panel-body
                 br
                 = form_for @skill, url: create_student_skill_path, method: :post do |s|
