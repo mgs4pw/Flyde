@@ -7,6 +7,7 @@ class CandidatesController < ApplicationController
     # Delete all previous matched candidates
     MatchedStudent.delete_all(['company_id = ?', @company.id])
 
+    importance = [0.5, 0.3, 0.2]
     @positions.each do |pos|
       possible_students = StudentTest.select("user_id").where(
         'skill_list_id in (?)', [pos.skill_1, pos.skill_2, pos.skill_3]).group(:user_id)
@@ -23,7 +24,7 @@ class CandidatesController < ApplicationController
           if test_record.blank? || test_record.result.blank?
             score_1 = 0
           else
-            score_1 = test_record.result * 0.5
+            score_1 = test_record.result * importance[pos.importance_1.to_i - 1]
           end
         end
 
@@ -34,7 +35,7 @@ class CandidatesController < ApplicationController
           if test_record.blank? || test_record.result.blank?
             score_2 = 0
           else
-            score_2 = test_record.result * 0.3
+            score_2 = test_record.result * importance[pos.importance_2.to_i - 1]
           end
         end
 
@@ -45,7 +46,7 @@ class CandidatesController < ApplicationController
           if test_record.blank? || test_record.result.blank?
             score_3 = 0
           else
-            score_3 = test_record.result * 0.2
+            score_3 = test_record.result * importance[pos.importance_3.to_i - 1]
           end
         end
 

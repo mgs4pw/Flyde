@@ -36,6 +36,7 @@ section#main role="main"
                           th Sent Date
                           th Interview Date
                           th Action
+                    - if @interviews.length != 0
                       tbody
                         - @interviews.each do |i|
                           tr
@@ -49,8 +50,5 @@ section#main role="main"
                             td.text-center.td-vmiddle
                               = link_to destroy_interview_path(i), class: 'btn btn-danger btn-xs', title: 'Delete', method: :delete, 'data-confirm' => 'Are you sure?' do
                                 span.ico-remove3
-                              span &nbsp;
-                              = link_to view_interview_path(i), class: 'btn btn-info btn-xs', title: 'View', method: :get do
-                                span.ico-eye
-                            
-                            
+                    - else
+                      h6.semibold.text-center No records

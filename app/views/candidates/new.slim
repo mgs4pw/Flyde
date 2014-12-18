@@ -28,7 +28,7 @@ section#main role="main"
 
                     .panel-body
                       - if pos.matched_students.empty?
-                        h4.semibold.text-danger.text-center There is no matched candidate in this position.      
+                        h6.semibold.text-center There is no matched candidate in this position.      
                       - else
                         - pos.matched_students.each_with_index do |st, st_idx|
                           .col-sm-3
@@ -47,6 +47,6 @@ section#main role="main"
                                 a href="#" onclick="showRequestInterview(#{pos.id}, #{st.student.id})" Request Interview
 
               - else
-                h4.semibold.text-danger.text-center There is no position in your company!
+                h6.semibold.text-center There is no position in your company!
 == render '/candidates/interview_request'
 == render '/candidates/matched_student'

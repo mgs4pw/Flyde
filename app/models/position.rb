@@ -2,13 +2,33 @@ class Position < ActiveRecord::Base
   
   belongs_to :user
 
-  belongs_to :skill_1, class_name: 'SkillList', foreign_key: :skill_1
-  belongs_to :skill_2, class_name: 'SkillList', foreign_key: :skill_2
-  belongs_to :skill_3, class_name: 'SkillList', foreign_key: :skill_3
-
   has_many :matched_students
   has_many :interviews
 
   validates_presence_of :name
+
+  def skill_1_name
+    if self.skill_1.nil?
+      ""
+    else
+      SkillList.find(self.skill_1).name
+    end
+  end
+
+  def skill_2_name
+    if self.skill_2.nil?
+      ""
+    else
+      SkillList.find(self.skill_2).name
+    end
+  end
+
+  def skill_3_name
+    if self.skill_3.nil?
+      ""
+    else
+      SkillList.find(self.skill_3).name
+    end
+  end
 
 end

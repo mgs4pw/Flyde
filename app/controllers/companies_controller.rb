@@ -74,14 +74,17 @@ class CompaniesController < ApplicationController
 
   def permit_position_params
     if params[:position][:skill_1].blank?
+      params[:position].delete :skill_1
       params[:position].delete :importance_1
     end
 
     if params[:position][:skill_2].blank?
+      params[:position].delete :skill_2
       params[:position].delete :importance_2
     end
 
     if params[:position][:skill_3].blank?
+      params[:position].delete :skill_3
       params[:position].delete :importance_3
     end
     

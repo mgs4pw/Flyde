@@ -36,27 +36,26 @@ section#main role="main"
                             = p.name
                         /! panel body with collapse capable
                         .panel-collapse.pull.out
-                          .panel-body
+                          .panel-body.pb5
                             .row
                               - unless p.skill_1.blank?
                                 .col-sm-6.col-xs-6.text-right
-                                  b = p.skill_1.name
+                                  b = p.skill_1_name
                                 .col-sm-6.col-xs-6 Importance #{p.importance_1} 
                             .row
                               - unless p.skill_2.blank?
                                 .col-sm-6.col-xs-6.text-right
-                                  b = p.skill_2.name
+                                  b = p.skill_2_name
                                 .col-sm-6.col-xs-6 Importance #{p.importance_2} 
                             .row
                               - unless p.skill_3.blank?
                                 .col-sm-6.col-xs-6.text-right
-                                  b = p.skill_3.name
+                                  b = p.skill_3_name
                                 .col-sm-6.col-xs-6 Importance #{p.importance_3}
                             .row
-                              .col-sm-6.col-sm-offset-3.text-center
-                                br
-                                = link_to company_position_destroy_path(p), class: 'btn btn-xs btn-danger', method: :delete, 'data-confirm' => 'Are you sure?' do
-                                  span.ico-remove &nbsp;Delete
+                              .text-right
+                                = link_to company_position_destroy_path(p), class: 'btn btn-xs', method: :delete, 'data-confirm' => 'Are you sure?' do
+                                  span.ico-remove3
 
                   /! Add new Position Information
                   .col-md-12

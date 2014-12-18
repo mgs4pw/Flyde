@@ -35,7 +35,9 @@ section#main role="main"
         br
         br
         /! tab menu
-        h5.text-primary.semibold.mt0 Matched Positions
+        h5.text-primary.semibold.mt0 
+          span.ico-newspaper
+          | &nbsp;Matched Positions
         - if @interviews.count == 0
           span No available positions
         - else
@@ -176,7 +178,7 @@ section#main role="main"
                 br
                 .row
                   - @skills.each do |sk|
-                    .col-md-3.mb10
+                    .col-lg-2.col-md-3.col-sm-4.col-xs-6.mb10
                       .alert.alert-info.skill-note
                         = link_to destroy_student_skill_path(sk), class: "btn close", method: :delete
                           | x
