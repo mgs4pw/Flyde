@@ -6,6 +6,7 @@ class StudentsController < ApplicationController
   def dashboard
     @student = current_user
     @interviews = @student.student_interviews.sent
+    @interviews_scheduled = @student.student_interviews.scheduled
 
     @experience = Experience.new
     @experiences = @student.experiences
@@ -104,6 +105,13 @@ class StudentsController < ApplicationController
   def deny_interview
     interview = Interview.find(params[:id])
     interview.update_attributes :status => Interview::DENIED
+
+    redirect_to student_dashboard_path
+  end
+
+  def destroy_interview
+    interview = Interview.find(params[:id])
+    interview.destroy
 
     redirect_to student_dashboard_path
   end
