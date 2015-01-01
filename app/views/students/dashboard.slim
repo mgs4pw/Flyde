@@ -81,7 +81,7 @@ section#main role="main"
                     tbody
                     - @interviews_scheduled.each do |i|
                       tr
-                        td.td-vmiddle = i.position.name
+                        td.td-vmiddle = i.try(:position).try(:name)
                         td.td-vmiddle
                           .media-object
                             = image_tag i.company.photo.url(:thumb), class: 'img-circle'
