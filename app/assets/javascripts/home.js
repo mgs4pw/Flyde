@@ -21,7 +21,7 @@ $(function () {
     // ================================
     if($("#layerslider").length !== 0) {
         $("#layerslider").layerSlider({
-            responsive: false,
+            responsive: true,
             responsiveUnder: 1280,
             layersContainer: 1280,
             skin: "fullwidth",
