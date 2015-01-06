@@ -15,7 +15,7 @@
 //= require adminre/plugins/selectize/js/selectize.min
 //= require adminre/plugins/jqueryui/js/jquery-ui.min
 //= require adminre/plugins/jqueryui/js/jquery-ui-timepicker.min
-//= require adminre/plugins/jqueryui/js/jquery-ui-touch.min/
+//= require adminre/plugins/jqueryui/js/jquery-ui-touch.min
 //= require adminre/javascript/forms/element
 
 //= require jquery_ujs
@@ -39,5 +39,20 @@ $(document).ready(function () {
         showOtherMonths: true,
         selectOtherMonths: true,
         dateFormat: 'yy-mm-dd'
+    });
+
+    $("#experience_date_from").datepicker({
+        defaultDate: "+1w",
+        numberOfMonths: 2,
+        onClose: function (selectedDate) {
+            $("#experience_date_to").datepicker("option", "minDate", selectedDate);
+        }
+    });
+    $("#experience_date_to").datepicker({
+        defaultDate: "+1w",
+        numberOfMonths: 2,
+        onClose: function (selectedDate) {
+            $("#experience_date_from").datepicker("option", "maxDate", selectedDate);
+        }
     });
 });

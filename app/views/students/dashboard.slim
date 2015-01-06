@@ -190,10 +190,10 @@ section#main role="main"
                       .col-sm-4
                         = e.label :date_from, 'From', class: 'control-label'
                         /!= e.date_select :date_from, {start_year: 1980}, class: 'form-control'
-                        = e.text_field :date_from,  class: 'form-control', placeholder: "Select a date"
+                        = e.text_field :date_from,  class: 'form-control', placeholder: "YYYY-MM-DD"
                       .col-sm-4
                         = e.label :date_to, 'To', class: 'control-label'
-                        = e.text_field :date_to,  class: 'form-control', placeholder: "Select a date"
+                        = e.text_field :date_to,  class: 'form-control', placeholder: "YYYY-MM-DD"
                   .panel-footer.text-right
                     = e.button 'Add', class: 'btn btn-success'
 
@@ -206,14 +206,18 @@ section#main role="main"
                   small.text-primary
                     i.ico-list
                   | &nbsp;Skills
-              .panel-body
+              .panel-body.text-center
                 br
                 = form_for @skill, url: create_student_skill_path, method: :post do |s|
                   .row
-                    .text-right.col-sm-6.col-sm-offset-4
-                      = s.select :skill, @skill_lists.collect {|c| [c.name, c.name]}, {prompt: 'Select skill'}, class: 'form-control', placeholder: "Type skill here"
-                    .text-right.col-sm-2
-                      = s.submit 'Add', class: "btn btn-success btn-block"
+                    .col-sm-8.col-sm-offset-2
+                      .col-sm-6
+                        = s.select :skill, @skill_lists.collect {|c| [c.name, c.name]}, {prompt: 'Select skill'}, class: 'form-control', placeholder: "Type skill here"
+                      .col-sm-6.no-padding
+                        .col-sm-6.pl5.pr5
+                          = link_to 'Verify', 'javascript:void(0);', class: "btn btn-success btn-block"
+                        .col-sm-6.pl5
+                          = s.submit 'Add', class: "btn btn-success btn-block"
                 br
                 .row
                   - @skills.each do |sk|

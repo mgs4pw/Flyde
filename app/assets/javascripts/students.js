@@ -1,3 +1,29 @@
+$("#experience_date_from").datepicker({
+    showOtherMonths: true,
+    selectOtherMonths: true,
+    dateFormat: 'yy-mm-dd'
+});
+
+$("#experience_date_to").datepicker({
+    showOtherMonths: true,
+    selectOtherMonths: true,
+    dateFormat: 'yy-mm-dd'
+});
+
+$("#experience_date_from").datepicker({
+    defaultDate: "+1w",
+    numberOfMonths: 2,
+    onClose: function (selectedDate) {
+        $("#experience_date_to").datepicker("option", "minDate", selectedDate);
+    }
+});
+$("#experience_date_to").datepicker({
+    defaultDate: "+1w",
+    numberOfMonths: 2,
+    onClose: function (selectedDate) {
+        $("#experience_date_from").datepicker("option", "maxDate", selectedDate);
+    }
+});
 
 function showCompanyProfile(company_id, interview_id) {
 	$.ajax({
