@@ -3,7 +3,7 @@ class Position < ActiveRecord::Base
   belongs_to :user
 
   has_many :matched_students
-  has_many :interviews
+  has_many :interviews, :dependent => :destroy
 
   validates_presence_of :name
 
