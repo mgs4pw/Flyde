@@ -17,14 +17,14 @@
         = link_to 'mailto:nawei@flydge.com', class: 'dropdown-toggle' do
           span.meta
             span.text.text-primary Contact
-     # li.dropdown
-      #  = link_to '', class: 'dropdown-toggle', data: {toggle: 'modal', target: '#signup_main'} do
-      #    span.meta
-      #      span.text.text-primary Sign Up
-    #  li.dropdown
-      #  = link_to '', class: 'dropdown-toggle', data: { toggle: "modal", target: '#signin_form' } do
-      #    span.meta
-      #      span.text.text-primary Log In
+     #li.dropdown
+      # = link_to '', class: 'dropdown-toggle', data: {toggle: 'modal', target: '#signup_main'} do
+      #   span.meta
+      #     span.text.text-primary Sign Up
+    # li.dropdown
+      # = link_to '', class: 'dropdown-toggle', data: { toggle: "modal", target: '#signin_form' } do
+      #  span.meta
+      #    span.text.text-primary Log In
 - content_for :modals
   = render 'devise/sessions/signin'
   = render 'devise/registrations/company'
