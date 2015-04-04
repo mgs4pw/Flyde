@@ -25,8 +25,8 @@
        /!= link_to '', class: 'dropdown-toggle', data: { toggle: "modal", target: '#signin_form' } do
         /!span.meta
         /!span.text.text-primary Log In
-- content_for :modals
-  = render 'devise/sessions/signin'
-  = render 'devise/registrations/company'
-  = render 'devise/registrations/student'
-  = render 'devise/registrations/signup_main'
+/!- content_for :modals
+  /!= render 'devise/sessions/signin'
+  /!= render 'devise/registrations/company'
+  /!= render 'devise/registrations/student'
+  /!= render 'devise/registrations/signup_main'
